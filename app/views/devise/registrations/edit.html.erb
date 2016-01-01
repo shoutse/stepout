@@ -27,6 +27,35 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <div><%= f.label :name %><br />
+    <%= f.text_field :name %></div>
+  </div>
+
+    <div class="field">
+    <div><%= f.label :birthday %><br />
+    <%= f.date_field :birthday %></div>
+  </div>
+
+    <div class="field">
+    <div><%= f.label :major %><br />
+    <%= f.text_field :major %></div>
+    </div>
+
+    <div class="field">
+    <div><%= f.label :occupation %><br />
+    <%= f.text_field :occupation %></div>
+    </div>    
+
+    <div class="field">
+    <div><%= f.label :school %><br />
+    <%= f.text_field :school %></div>
+    </div>
+    <div class="field">
+    <div><%= f.label :former_occupation %><br />
+    <%= f.text_field :former_occupation %></div>
+    </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
