@@ -1,11 +1,47 @@
+<%if @position%>
+<h1><%=@position.name%></h1>>
+<%end%>
+
 <table>
 	<%@industries.each do |i|%>
 		<tr>
 		<td>
-			<%=i.name%>
+			<%=link_to i.name,topics_path(:i=>i.id,:p=>params[:p])%>
 		</td>
 		</tr>
 	<%end%>
 </table>
 
 
+<table>
+	<tr>
+		<td>
+			文章名稱
+		</td>
+		<td>
+			作者
+		</td>
+		<td>
+			職業別
+		</td>
+		<td>
+			產業別
+		</td>
+	</tr>
+	<%@topics.each do |t|%>
+	<tr>
+		<td>
+			<%=t.name%>
+		</td>
+		<td>
+			<%=t.user.try(:email)%>
+		</td>
+		<td>
+			<%=t.position.name%>
+		</td>
+		<td>
+			<%=t.industry.name%>
+		</td>
+	</tr>
+	<%end%>
+</table>

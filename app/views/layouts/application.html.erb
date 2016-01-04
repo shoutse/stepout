@@ -16,7 +16,9 @@
           <%= link_to('登入', new_session_path(:user)) %>
           <%= link_to "登入 Facebook", user_omniauth_authorize_path(:facebook) %>
       <% end %>
-
+<%Position.all.each do |p|%>
+<%=link_to p.name,topics_path(:p=>p.id)%>
+<%end%>
 <%= yield %>
 
 </body>
