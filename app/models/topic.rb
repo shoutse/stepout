@@ -8,6 +8,12 @@ class Topic < ActiveRecord::Base
 	has_many :subscriptions
 	has_many :subscription_users,:through=>:subscriptions,:source=>:user
 
-
+  def find_my_like(u)
+     if u
+       self.likes.where( :user_id => u.id ).first
+     else
+       nil
+     end
+  end
 
 end

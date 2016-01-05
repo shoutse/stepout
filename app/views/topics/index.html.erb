@@ -27,11 +27,14 @@
 		<td>
 			產業別
 		</td>
+		<td>
+			留言數
+		</td>
 	</tr>
 	<%@topics.each do |t|%>
 	<tr>
 		<td>
-			<%=t.name%>
+			<%=link_to t.name,topic_path(t)%>
 		</td>
 		<td>
 			<%=t.user.try(:email)%>
@@ -41,6 +44,9 @@
 		</td>
 		<td>
 			<%=t.industry.name%>
+		</td>
+		<td>
+			<%=t.comment_count%>
 		</td>
 	</tr>
 	<%end%>

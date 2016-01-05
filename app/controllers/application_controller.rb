@@ -25,5 +25,10 @@ class ApplicationController < ActionController::Base
       		devise_parameter_sanitizer.for(:account_update)<<:former_occupation
       		devise_parameter_sanitizer.for(:account_update)<<:role
     	end
+
+     def set_topic
+        @topic = Topic.find( params[:topic_id] )
+     end
+
   	
 end

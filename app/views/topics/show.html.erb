@@ -1,0 +1,62 @@
+<h2><%=@topic.name%></h2>
+
+	<% like = @topic.find_my_like(current_user) %>
+	<% if like %>
+	<%= link_to "Unlike", topic_like_path(@topic, like), :method => :delete, :class => "btn btn-danger" %>
+	<% else %>
+	<%= link_to "Like", topic_likes_path(@topic), :method => :post, :class => "btn btn-default" %>
+	<% end %>
+ 
+	 <p>
+	 	Liked by
+	 	<% @topic.like_users.each do |u| %>
+	  <%= link_to u.email, user_path(u) %>,
+	 	<% end %>
+	 </p>
+
+
+
+
+<p>
+	<%=@topic.content%>
+</p>
+
+<table class="table">
+<tr>
+	<td>
+		內容
+	</td>
+	<td>
+		留言者
+	</td>
+	<td>
+		回覆時間
+	</td>
+</tr>
+
+<% @comments.each do |c|%>
+<tr>
+	<td>
+		<%=c.content%>
+	</td>
+	<td>
+		<%=c.user.try(:email)%>
+	</td>
+	<td>
+		<%=c.created_at%>
+	</td>
+
+</tr>
+<%end%>
+</table>
+
+<%= form_for @comment,:url=>topic_comments_path(@topic) do |f|%>
+<%= f.label :content%>
+<%= f.text_area :content%>
+
+<%= f.submit "回覆",:class=>"btn btn-deafault"%>
+<%end%>
+
+
+
+<p><%= link_to 'Back to '+@topic.position.name, topics_path(:p=>@topic.position) %></p>
