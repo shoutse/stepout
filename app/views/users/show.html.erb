@@ -1,0 +1,6 @@
+<h1><%= @user.email %></h1>
+ 
+<%=link_to "收藏文章"%>|<%=link_to "我的文章"%>|<%=link_to "帳號管理"%>
+
+
+ <%= render :partial => "topics/list", :locals => { :topics => @topics } %> 

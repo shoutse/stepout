@@ -7,6 +7,14 @@
 	<%= link_to "Like", topic_likes_path(@topic), :method => :post, :class => "btn btn-default" %>
 	<% end %>
  
+ 	<% if @topic.find_my_subscription(current_user) %>
+ 	<%= link_to "UnSubscribe", unsubscribe_topic_path(@topic), :method => :post, :class => "btn btn-danger" %>
+  <% else %>
+  <%= link_to "Subscribe", subscribe_topic_path(@topic), :method => :post, :class => "btn btn-default" %>
+  <% end %>
+
+
+
 	 <p>
 	 	Liked by
 	 	<% @topic.like_users.each do |u| %>

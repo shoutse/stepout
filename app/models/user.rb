@@ -10,9 +10,9 @@ class User < ActiveRecord::Base
   has_many :drafts
   has_many :comments
 
-  has_many :likes
+  has_many :likes,:dependent => :destroy
   has_many :like_topics,:through=>:likes,:source=>:topic
-  has_many :subscriptions
+  has_many :subscriptions,:dependent => :destroy
   has_many :subscription_topics,:through=>:subscriptions,:through=>:topic
 
   def self.from_omniauth(auth)

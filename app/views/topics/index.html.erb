@@ -13,41 +13,4 @@
 </table>
 
 
-<table>
-	<tr>
-		<td>
-			文章名稱
-		</td>
-		<td>
-			作者
-		</td>
-		<td>
-			職業別
-		</td>
-		<td>
-			產業別
-		</td>
-		<td>
-			留言數
-		</td>
-	</tr>
-	<%@topics.each do |t|%>
-	<tr>
-		<td>
-			<%=link_to t.name,topic_path(t)%>
-		</td>
-		<td>
-			<%=t.user.try(:email)%>
-		</td>
-		<td>
-			<%=t.position.name%>
-		</td>
-		<td>
-			<%=t.industry.name%>
-		</td>
-		<td>
-			<%=t.comment_count%>
-		</td>
-	</tr>
-	<%end%>
-</table>
+<%= render :partial => "list", :locals => { :topics => @topics } %>
