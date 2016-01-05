@@ -4,7 +4,13 @@ class UsersController < ApplicationController
    def show
      @user = User.find( params[:id] )
  
-     @topics = @user.topics
+
+ 		 if params[:me]
+ 		 		@topics = @user.topics
+ 		 else
+     		@topics=@user.subscription_topics
+     end
+
    end
  
    def edit
