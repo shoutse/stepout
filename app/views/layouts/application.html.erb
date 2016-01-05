@@ -19,7 +19,9 @@
 <%Position.all.each do |p|%>
 <%=link_to p.name,topics_path(:p=>p.id)%>
 <%end%>
+<div class="container">
 <%= yield %>
+</div>
 
 </body>
 </html>

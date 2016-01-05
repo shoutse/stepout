@@ -6,9 +6,9 @@ class UsersController < ApplicationController
  
 
  		 if params[:me]
- 		 		@topics = @user.topics
+ 		 		@topics = @user.topics.page( params[:page] ).per(10)
  		 else
-     		@topics=@user.subscription_topics
+     		@topics=@user.subscription_topics.page( params[:page] ).per(10)
      end
 
    end
