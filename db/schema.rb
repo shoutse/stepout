@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151231110013) do
+ActiveRecord::Schema.define(version: 20160106092622) do
 
   create_table "comments", force: :cascade do |t|
-    t.string   "content"
+    t.text     "content"
     t.integer  "user_id"
     t.integer  "topic_id"
     t.datetime "created_at", null: false
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20151231110013) do
 
   create_table "drafts", force: :cascade do |t|
     t.string   "name"
-    t.string   "content"
+    t.text     "content"
     t.string   "answer1"
     t.string   "answer2"
     t.string   "answer3"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20151231110013) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "years"
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -76,7 +77,7 @@ ActiveRecord::Schema.define(version: 20151231110013) do
 
   create_table "topics", force: :cascade do |t|
     t.string   "name"
-    t.string   "content"
+    t.text     "content"
     t.integer  "comment_count"
     t.integer  "position_id"
     t.integer  "industry_id"
@@ -109,9 +110,12 @@ ActiveRecord::Schema.define(version: 20151231110013) do
     t.string   "role"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "fb_uid"
+    t.string   "fb_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["fb_uid"], name: "index_users_on_fb_uid"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
