@@ -3,10 +3,10 @@
 <%if @user==current_user%>
 <%@str="我的文章"%>
 <%else%>
-<%@str=@user.email%>
+<%@str=@user.email+"的文章"%>
 <%end%>
 
-<%=link_to "收藏文章",user_path(params[:id])%>|<%=link_to @str+"的文章",user_path(params[:id],:me=>"me")%>
+<%=link_to "收藏文章",user_path(params[:id])%>|<%=link_to @str,user_path(params[:id],:me=>"me")%>
 <%if @user==current_user%>
 |<%=link_to "帳號管理",edit_registration_path(:user)%>
 <%end%>
