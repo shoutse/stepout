@@ -1,7 +1,7 @@
-<table>
+<table class="table">
 	<tr>
 		<td>
-			文章名稱
+		  文章名稱
 		</td>
 		<td>
 			作者
@@ -37,6 +37,10 @@
 		</td>
 	</tr>
 	<%end%>
+	<tr>
+		<td>
+		<%= paginate @topics %>
+		</td>
+	</tr>
 </table>
 
-<%= paginate @topics %>
