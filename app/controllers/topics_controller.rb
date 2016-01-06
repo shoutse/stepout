@@ -36,6 +36,10 @@ class TopicsController < ApplicationController
     redirect_to :back
   end
 
+  def welcome
+  	
+  end
+
 
 
 end
