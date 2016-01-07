@@ -11,6 +11,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem 'font-awesome-sass', '~> 4.5.0'
+
+gem "font-awesome-rails"
+
 gem 'kaminari'
 
 gem 'devise'
@@ -18,6 +22,12 @@ gem 'devise'
 gem "paperclip"
 
 gem 'omniauth-facebook'
+
+gem "rest-client"
+
+gem 'select2-rails', '~> 4.0'
+
+
 
 # gem 'faker'
 

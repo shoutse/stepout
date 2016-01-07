@@ -46,6 +46,12 @@ class User < ActiveRecord::Base
       return user
     end
 
+    def get_fb_data
+      j = RestClient.get "https://graph.facebook.com/v2.5/me", :params => { :access_token => self.fb_token, :fields => "id,name,email,picture" }
+      JSON.parse(j)
+    end
+
+
     def display_name
       fullname || username || email
     end
