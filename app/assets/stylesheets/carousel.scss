@@ -129,7 +129,7 @@ body {
   }
 
   .right{
-  float: right; 
+  float: right;
   padding-right:30px;
 }
 
@@ -143,10 +143,37 @@ body {
     margin-top: 120px;
   }
 .right{
-  float: right; 
+  float: right;
   padding-right:30px;
 }
 
+.container .top-flow {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 20;
+}
+
+.container .position-square{
+  padding-right: 0;
+  padding-left: 0;
+}
 
 
+}
+
+.footer {
+  background-color: black;
+}
+
+.widget-footer .widget-title h4{
+color: white;
+}
+
+.footer .col-md-2 {
+  color: orange;
+}
+
+.navbar-brand h1 {
+  color: orange;
 }

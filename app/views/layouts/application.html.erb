@@ -13,12 +13,13 @@
 <body>
 
 
-<!--      
+<!--
 <%Position.all.each do |p|%>
 <%=link_to p.name,topics_path(:p=>p.id)%>
 <%end%> -->
 
  <body>
+
     <div class="navbar-wrapper">
       <div class="container">
 
@@ -32,7 +33,7 @@
                 <span class="icon-bar"></span>
               </button>
 
-              <a class="navbar-brand" href="http://localhost:3000/welcome">Stepout</a>
+              <a class="navbar-brand" href="http://localhost:3000/welcome"><h1 class="fa fa-gg-circle">Stepout</h1></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
@@ -44,10 +45,10 @@
                      <%end%>
                   </ul>
                 </li>
-                    
+
                 <li><a href="#about">我要投稿</a></li>
               </ul>
-              
+
 
               <div class="right">
               <ul class="nav navbar-nav">
@@ -65,7 +66,7 @@
                   <li><%= link_to('註冊', new_registration_path(:user)) %></li>
                   <li><%= link_to('登入', new_session_path(:user)) %></li>
                   <li> <%= link_to image_tag("facebook_icon_30x30.gif"), user_omniauth_authorize_path(:facebook) %></li>
-          
+
                 <% end %>
 
 
@@ -81,9 +82,58 @@
 
 
 
-<div class="container">
-<%= yield %>
-</div>
+      <div class="container">
+       <!-- <div class="row"> -->
+        <!-- <div class="col-md-12"> -->
+          <%= yield %>
+        <!-- </div> -->
+       <!-- </div> -->
+      </div>
+  <hr>
+  <div class="footer">
+     <div class="bg-black">
+       <div class="container">
+         <div class="row">
+            <div class="col-md-2">
+              <h1 class="fa fa-gg-circle fa-2x">Stepout</h1>
+            </div>
+            <div class="col-md-5">
+              <div class="widget-footer">
+                <div class="widget-title"><h4>創辦理念</h4></div>
+                 <p>
+                  <div class="widget-box">
+                    <div class="about-us">
+                       <p>民進黨總統候選人蔡英文認為，國民黨總統候選人朱立倫身為
+                       新北市市長，卻違背了原先做好做滿的諾言，誠信令人質疑。對此，朱立倫則回應：記得有一次在淡水參拜時，一位阿嬤建議他一定要出來選總統，只好忍痛違背做好做滿的承諾。</p>
+                    </div>
+                  </div>
+                </p>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="widget-footer">
+                <div class="widget-title"><h4>聯絡我們</h4></div>
+                 <p>
+                  <div class="widget-box">
+                    <div class="contact-us">
+                     <p>
+                       <div class="input-group margin-bottom-sm">
+                          <span class="input-group-addon">
+                            <i class="fa fa-envelope-o fa-fw"></i>
+                          </span>
+                            <input class="form-control" type="text" placeholder="Email address">
+
+                       </div>
+                      </p>
+                    </div>
+                  </div>
+                </p>
+              </div>
+            </div>
+         </div>
+       </div>
+     </div>
+  </div>
 
 </body>
 </html>
