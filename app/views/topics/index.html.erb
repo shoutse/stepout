@@ -2,23 +2,30 @@
 
 
 <div class="container">
- 	<div class="col-sm-3 col-md-2 sidebar">
+ 	<row>
+ 		 <div class="col-sm-3 col-md-2 sidebar">
 
           <ul class="nav nav-sidebar">
-
+    
           	<%@industries.each do |i|%>
           	<li><%=link_to i.name,topics_path(:i=>i.id,:p=>params[:p])%></li>
           	<%end%>
+
           </ul>
 
- </div>
- <div class="maintable">
+
+		  </div>
+
 
 
  					<%if @position%>
-					<h1><%=@position.name%></h1>
-					<%end%>
 
-<%= render :partial => "list", :locals => { :topics => @topics } %>
+					<h1 class="col-md-12 positionname"><%=@position.name%></h1>
+					<%end%>
+					<%= render :partial => "list", :locals => { :topics => @topics } %>
+
+	</row>
+
+
 </div>
-</div>
+

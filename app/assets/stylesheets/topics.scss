@@ -1,4 +1,49 @@
+.pag{
+	margin-left:200px;
+}
+
+
+.positionname{
+	padding-left:200px;
+}
+
+
+.maintable{
+	padding-top: 50px;
+	/*padding-left: 200px;*/
+}
+
+.topicbox{
+	margin-left:200px;
+	height:150px;
+	margin-bottom:50px;
+}
+
+
+.topicboxphoto{
+padding:0;
+margin:0;
+height:150px;
+width:150px;
+}
+.topicboxphoto img{
+padding-left:0;
+height:150px;
+width:150px;
+margin-left:0;
+}
+
+.topicboxmain{
+	border-style:solid;
+	height:150px;	
+}
+
+
+@media (min-width: 768px) {
 .maintable{
 	padding-top: 50px;
 	padding-left: 200px;
 }
+}
+
+

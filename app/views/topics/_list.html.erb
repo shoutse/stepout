@@ -1,46 +1,26 @@
-<table class="table">
-	<tr>
-		<td>
-		  文章名稱
-		</td>
-		<td>
-			作者
-		</td>
-		<td>
-			職業別
-		</td>
-		<td>
-			產業別
-		</td>
-		<td>
-			留言數
-		</td>
-	</tr>
-	<%@topics.each do |t|%>
-	<tr>
-		<td>
-			<%=link_to t.name,topic_path(t)%>
-		</td>
-		<td>
-			<%if t.user!=nil%>
-			<%=link_to t.user.try(:email),user_path(t.user)%>
-			<%end%>
-		</td>
-		<td>
-			<%=t.position.name%>
-		</td>
-		<td>
-			<%=t.industry.name%>
-		</td>
-		<td>
-			<%=t.comment_count%>
-		</td>
-	</tr>
-	<%end%>
-	<tr>
-		<td>
-		<%= paginate @topics %>
-		</td>
-	</tr>
-</table>
+<%@topics.each do |t|%>
+<row>
+	<div class="col-md-12 topicbox">
+	<row>
+	<div class="col-md-4 topicboxphoto"><%=image_tag("space.jpg")%></div>
+	<div class="col-md-8 topicboxmain">
+	<row>
+	<span class="col-md-8"><h2><%=link_to t.name,topic_path(t)%></h2></span><span class="col-md-4"><%=t.created_at%></span><span class="col-md-8"><%=t.user.name%> <%=t.user.occupation%> <%=t.industry.name%></span>
+	</row>
+		<row>
+	<span class="col-md-8"><p>2015年事故頻傳，八仙樂園粉塵爆、復興航空空難這些重大災難，深深影響你我的心理感受。。</p></span><span class="col-md-4">likes:<%=t.likes.size%></span><span class="col-md-4">收藏:<%=t.subscriptions.size%></span>
+	</row>
 
+	</div>
+	</row>
+	</div>
+	</row>
+
+<%end%>
+
+<row>
+
+<div class="col-md-12 pag">
+	<%= paginate @topics %>
+</div>
+</row>
