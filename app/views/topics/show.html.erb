@@ -1,70 +1,78 @@
-<h2><%=@topic.name%></h2>
+		<row>
+			<h1 class="col-md-12"><%=@topic.name%></h1>
+		</row>
+		<row>
+			<div class="col-md-4 topicimage"><%=image_tag("space.jpg")%></div>
+			<div class="col-md-4 topicusername"><h6><%=@topic.user.name%></h6>
+			<h6><%=@topic.user.occupation%></h6><h6><%=@topic.industry.name%></h6></div>
+			<div class="col-md-4">	<% like = @topic.find_my_like(current_user) %>
+				<% if like %>
+				<%= link_to "Unlike", topic_like_path(@topic, like), :method => :delete, :class => "btn btn-danger" %>
+				<% else %>
+				<%= link_to "Like", topic_likes_path(@topic), :method => :post, :class => "btn btn-default" %>
+				<% end %>
+			 
+			 	<% if @topic.find_my_subscription(current_user) %>
+			 	<%= link_to "UnSubscribe", unsubscribe_topic_path(@topic), :method => :post, :class => "btn btn-danger" %>
+			  <% else %>
+			  <%= link_to "Subscribe", subscribe_topic_path(@topic), :method => :post, :class => "btn btn-default" %>
+			  <% end %>
+			 </div>
+		</row>
 
-	<% like = @topic.find_my_like(current_user) %>
-	<% if like %>
-	<%= link_to "Unlike", topic_like_path(@topic, like), :method => :delete, :class => "btn btn-danger" %>
-	<% else %>
-	<%= link_to "Like", topic_likes_path(@topic), :method => :post, :class => "btn btn-default" %>
-	<% end %>
- 
- 	<% if @topic.find_my_subscription(current_user) %>
- 	<%= link_to "UnSubscribe", unsubscribe_topic_path(@topic), :method => :post, :class => "btn btn-danger" %>
-  <% else %>
-  <%= link_to "Subscribe", subscribe_topic_path(@topic), :method => :post, :class => "btn btn-default" %>
-  <% end %>
+		<row>
+			<div class="col-md-12 topiccontent">
+				<p>
+					<%=@topic.content%>
+				</p>
+			</div>
+		</row>
 
+		<row>
+			<table class="col-md-12 table">
+		<tr>
+			<td>
+				內容
+			</td>
+			<td>
+				留言者
+			</td>
+			<td>
+				回覆時間
+			</td>
+		</tr>
 
+		<% @comments.each do |c|%>
+		<tr>
+			
+			<td class="commentcontent">
+				<%=c.content%>
+			</td>
+			<td>
+				<%=c.user.name||c.user.try(:email)%>
+			</td>
+			<td>
+				<%=c.created_at.to_s(:short)%>
+			</td>
 
-	 <p>
-	 	Liked by
-	 	<% @topic.like_users.each do |u| %>
-	  <%= link_to u.email, user_path(u) %>,
-	 	<% end %>
-	 </p>
+		</tr>
+		<%end%>
+		</table>
+		</row>
+		<row>
+		<div class="col-md-12 topiccomment">
+			<div class="form-group">
+				<%= form_for @comment,:url=>topic_comments_path(@topic) do |f|%>
+				<!--<%= f.label :content%>-->
+				<%= f.text_area :content,:class=>"form-control"%>
+			</div>
 
+			<%= f.submit "我要留言",:class=>"btn btn-primary"%>
+			
+		</div>
+		<%end%>
+		</row>
+		<row>
 
-
-
-<p>
-	<%=@topic.content%>
-</p>
-
-<table class="table">
-<tr>
-	<td>
-		內容
-	</td>
-	<td>
-		留言者
-	</td>
-	<td>
-		回覆時間
-	</td>
-</tr>
-
-<% @comments.each do |c|%>
-<tr>
-	<td>
-		<%=c.content%>
-	</td>
-	<td>
-		<%=c.user.try(:email)%>
-	</td>
-	<td>
-		<%=c.created_at%>
-	</td>
-
-</tr>
-<%end%>
-</table>
-
-<%= form_for @comment,:url=>topic_comments_path(@topic) do |f|%>
-<%= f.label :content%>
-<%= f.text_area :content%>
-
-<%= f.submit "回覆",:class=>"btn btn-deafault"%>
-<%end%>
-
-
-
-<p><%= link_to 'Back to '+@topic.position.name, topics_path(:p=>@topic.position) %></p>
+			<p class="col-md-12"><%= link_to 'Back to '+@topic.position.name, topics_path(:p=>@topic.position) %></p>
+		</row>
