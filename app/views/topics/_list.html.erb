@@ -5,7 +5,7 @@
 	<div class="col-md-4 topicboxphoto"><%=image_tag("space.jpg")%></div>
 	<div class="col-md-8 topicboxmain">
 	<row>
-	<span class="col-md-8"><h2><%=link_to t.name,topic_path(t)%></h2></span><span class="col-md-4"><%=t.created_at%></span><span class="col-md-8"><%=t.user.name%> <%=t.user.occupation%> <%=t.industry.name%></span>
+	<span class="col-md-8"><h2><%=link_to t.name,topic_path(t)%></h2></span><span class="col-md-4"><%=t.created_at.to_s(:short)%></span><span class="col-md-8"><%=t.user.name%> <%=t.user.occupation%> <%=t.industry.name%></span>
 	</row>
 		<row>
 	<span class="col-md-8"><p>2015年事故頻傳，八仙樂園粉塵爆、復興航空空難這些重大災難，深深影響你我的心理感受。。</p></span><span class="col-md-4">likes:<%=t.likes.size%></span><span class="col-md-4">收藏:<%=t.subscriptions.size%></span>
