@@ -1,9 +1,9 @@
 <h1><%= @user.email %></h1>
- 
-<%if @user==current_user%>
+
+<% if @user==current_user %>
 <%@str="我的文章"%>
 <%else%>
-<%@str=@user.email+"的文章"%>
+<% @str=@user.email+"的文章"%>
 <%end%>
 
 <%=link_to "收藏文章",user_path(params[:id])%>|<%=link_to @str,user_path(params[:id],:me=>"me")%>
@@ -11,6 +11,5 @@
 |<%=link_to "帳號管理",edit_registration_path(:user)%>
 <%end%>
 
- <%= render :partial => "topics/list", :locals => { :topics => @topics } %> 
+ <%= render :partial => "topics/list", :locals => { :topics => @topics } %>
 
- 
