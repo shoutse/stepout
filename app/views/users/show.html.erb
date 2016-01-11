@@ -1,3 +1,35 @@
+<div class="container">
+         <div class="row">
+           <div class="col-md-12 userbox">
+             <row>
+               <div class="col-md-4 user-photo">
+                  <div class="user-thumb">
+                      <a href="#"><img src="http://placehold.it/150x150" alt="" class="img-circle"></a>
+                  </div>
+               <div class="col-md-8 user-info">
+                  <row>
+                      <span class="col-md-4">
+                       <h2><%=user.name%></h2>
+                      </span>
+                      <span class="col-md-4">
+                       <%=user.position%>
+                      </span>
+                      <span class="col-md-4">
+                       <%=user.industry%>
+                      </span>
+                  </row>
+               <div class="topic-industry">產業：無產階級</div>
+               <div class="topic-position">職稱：老佛爺</div>
+               <div class="excerpt">
+                     文章開頭：阿嬤只是睡著了
+               </div>
+                <div class="meta">
+               <div class="fa fa-wheelchair fa-3x"></div>
+                 <a href="#" class="more">阿嬤沒感覺</a>
+               </div>
+             </div>
+           </div>
+
 <h1><%= @user.email %></h1>
 
 <% if @user==current_user %>
