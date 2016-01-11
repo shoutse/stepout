@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
 	 before_action :authenticate_user!, :except => [:show]
- 
+
    def show
      @user = User.find( params[:id] )
- 
+
 
  		 if params[:me]
  		 		@topics = @user.topics.page( params[:page] ).per(10)
@@ -12,11 +12,11 @@ class UsersController < ApplicationController
      end
 
    end
- 
+
    def edit
      @user = current_user
    end
- 
+
    def update
      @user = current_user
      # ....

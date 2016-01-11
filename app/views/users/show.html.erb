@@ -1,47 +1,59 @@
-<div class="container">
-         <div class="row">
+
+          <div class="user-container">
            <div class="col-md-12 userbox">
              <row>
-               <div class="col-md-4 user-photo">
-                  <div class="user-thumb">
+                <div class="col-md-3 userboxphoto">
+                   <div class="user-thumb">
                       <a href="#"><img src="http://placehold.it/150x150" alt="" class="img-circle"></a>
-                  </div>
-               <div class="col-md-8 user-info">
-                  <row>
-                      <span class="col-md-4">
-                       <h2><%=user.name%></h2>
+                   </div>
+                </div>
+                <div class="col-md-9 userboxinfo">
+                   <row>
+                      <span class="col-md-12">
+                       <h2><%=@user.name%></h2>
                       </span>
-                      <span class="col-md-4">
-                       <%=user.position%>
+                      <span class="col-md-12">
+                      工程製造
                       </span>
-                      <span class="col-md-4">
-                       <%=user.industry%>
+                      <span class="col-md-12">
+                      <p>資訊科技</p>
                       </span>
-                  </row>
-               <div class="topic-industry">產業：無產階級</div>
-               <div class="topic-position">職稱：老佛爺</div>
-               <div class="excerpt">
-                     文章開頭：阿嬤只是睡著了
-               </div>
-                <div class="meta">
-               <div class="fa fa-wheelchair fa-3x"></div>
-                 <a href="#" class="more">阿嬤沒感覺</a>
-               </div>
-             </div>
-           </div>
+                    </row>
+                    <row>
+                      <span class="col-md-12">
+                        <p>傳說中的阿嬤身份依然是個謎傳說中的阿嬤身份依然是個謎傳說中的阿嬤身份依然是個謎傳說中的阿嬤身份依然是個謎傳說中的阿嬤身份依然是個謎傳說中的阿嬤身份依然是個謎傳說中的阿嬤身份依然是個謎傳說中的阿嬤身份依然是個謎傳說中的阿嬤身份依然是個謎傳說中的阿嬤身份依然是個謎傳說中的阿嬤身份依然是個謎傳說中的阿嬤身份依然是個謎傳說中的阿嬤身份依然是個謎傳說中的阿嬤身份依然是個謎傳說中的阿嬤身份依然是個謎傳說中的阿嬤身份依然是個謎</p>
+                      </span>
+                    </row>
+                </div>
 
-<h1><%= @user.email %></h1>
+             </row>
+            </div>
+            </div>
+
+
+
+
 
 <% if @user==current_user %>
 <%@str="我的文章"%>
 <%else%>
 <% @str=@user.email+"的文章"%>
 <%end%>
-
-<%=link_to "收藏文章",user_path(params[:id])%>|<%=link_to @str,user_path(params[:id],:me=>"me")%>
-<%if @user==current_user%>
-|<%=link_to "帳號管理",edit_registration_path(:user)%>
-<%end%>
+<div class="usercollection">
+  <row>
+    <span class="col-md-4">
+        <h3><%=link_to "收藏文章",user_path(params[:id])%></h3>
+    </span>
+    <span class="col-md-4">
+       <h3> <%=link_to @str,user_path(params[:id],:me=>"me")%></h3>
+    </span>
+    <% if @user==current_user%>
+    <span class="col-md-4">
+      <h3><%=link_to "帳號管理",edit_registration_path(:user)%></h3>
+    <% end %>
+    </span>
+  </row>
+</div>
 
  <%= render :partial => "topics/list", :locals => { :topics => @topics } %>
 
