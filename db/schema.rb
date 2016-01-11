@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160104061659) do
+ActiveRecord::Schema.define(version: 20160111115738) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "content"
@@ -113,6 +113,10 @@ ActiveRecord::Schema.define(version: 20160104061659) do
     t.string   "uid"
     t.string   "fb_uid"
     t.string   "fb_token"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

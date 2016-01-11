@@ -30,6 +30,11 @@
   <div class="field">
     <div><%= f.label :name,"姓名" %><br />
     <%= f.text_field :name %></div>
+  </div><br/>
+
+  <div class="form-group">
+    <div><%= f.label :photo, "個人頭像"%><br/>
+      <%= f.file_field :photo%></div>
   </div>
 
     <div class="field">
@@ -45,7 +50,7 @@
     <div class="field">
     <div><%= f.label :occupation,"職業" %><br />
     <%= f.text_field :occupation %></div>
-    </div>    
+    </div>
 
     <div class="field">
     <div><%= f.label :school,"畢業學校" %><br />

@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
   has_many :subscriptions,:dependent => :destroy
   has_many :subscription_topics,:through=>:subscriptions,:source=>:topic
 
+  has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
+
+
   def self.from_omniauth(auth)
       # Case 1: Find existing user by facebook uid
       user = User.find_by_fb_uid( auth.uid )
@@ -24,7 +28,7 @@ class User < ActiveRecord::Base
          user.save!
         return user
       end
- 
+
       # Case 2: Find existing user by email
       existing_user = User.find_by_email( auth.info.email )
       if existing_user
@@ -34,7 +38,7 @@ class User < ActiveRecord::Base
         existing_user.save!
         return existing_user
       end
- 
+
       # Case 3: Create new password
       user = User.new
       user.fb_uid = auth.uid

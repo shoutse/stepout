@@ -2,13 +2,13 @@
           <div class="user-container">
            <div class="col-md-12 userbox">
              <row>
-                <div class="col-md-3 userboxphoto">
-                   <div class="user-thumb">
-                      <a href="#"><img src="http://placehold.it/150x150" alt="" class="img-circle"></a>
+                <div class="col-md-4 userboxphoto">
+                   <!-- <div class="user-thumb"> -->
 
-                   </div>
+                      <%= image_tag @user.photo.url(:medium), :class=>"img-circle" %>
+                   <!-- </div> -->
                 </div>
-                <div class="col-md-9 userboxinfo">
+                <div class="col-md-8 userboxinfo">
                    <row>
                       <span class="col-md-12">
                        <h2><%=@user.name%></h2>
