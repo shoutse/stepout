@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   get "/welcome" => "topics#welcome"
 
 
-  resources :users
 
+
+  resources :users
+  resources :drafts
 
 
   resources :topics do
