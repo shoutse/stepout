@@ -3,9 +3,9 @@
 
 <div class="container">
 	<row>
-	 	<%if @position%>
+	 	<% if @position %>
 	 	<h1 class="col-md-12 positionname"><%=@position.name%></h1>
-		<%end%>
+		<% end %>
 	</row>
   <row>
        <div class="col-md-12 topic-title"><h3>熱門精選</h3></div>
@@ -78,7 +78,7 @@
 			<div class="list-group">
 				<%@industries.each do |i|%>
 				<%=link_to i.name,topics_path(:i=>i.id,:p=>params[:p]),:class=>"list-group-item"%>
-				<%end%>
+				<% end %>
 			</div>
 	</div>
 

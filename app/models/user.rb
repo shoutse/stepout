@@ -49,4 +49,9 @@ class User < ActiveRecord::Base
       user.save!
       return user
   end
+
+  def admin?
+    self.role == "admin"
+  end
+
 end

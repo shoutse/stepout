@@ -3,7 +3,13 @@ Rails.application.routes.draw do
 
   get "/welcome" => "topics#welcome"
 
-
+  namespace :admin do
+    resources :topics
+    resources :users
+    resources :positions
+    resources :industries
+    resources :drafts
+  end
 
 
   resources :users
@@ -13,7 +19,7 @@ Rails.application.routes.draw do
   resources :topics do
     resources :comments,:controller=>"topic_comments"
     resources :likes
-    
+
     member do
       post :subscribe
       post :unsubscribe
