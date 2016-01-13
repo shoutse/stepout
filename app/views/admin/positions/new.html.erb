@@ -1,0 +1,20 @@
+<% if @position.errors.any? %>
+      <ul>
+        <% @position.errors.full_messages.each do |msg| %>
+
+        <li><%= msg %></li>
+
+        <% end %>
+      </ul>
+<% end %>
+
+<%= form_for @position, :url => admin_positions_path do |f| %>
+
+ <div class="form-group">
+   <%= f.label :name %>
+   <%= f.text_field :name,:required => true, :class => "form-control" %>
+ </div>
+ <div class="form-group">
+   <%= f.submit "Create", :class=> "btn btn-primary" %>
+</div>
+<% end %>

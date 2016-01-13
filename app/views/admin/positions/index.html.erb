@@ -1,0 +1,25 @@
+<hr>
+<% @positions.each do |p| %>
+<table>
+    <tr>
+        <td><%= p.name %></td>
+
+
+
+        <td><%= link_to "進入", admin_position_path(p),:class => "btn btn-primary" %> </td>
+
+
+        <td><%= link_to "編輯", edit_admin_position_path(p),:class => "btn btn-primary" %></td>
+
+
+        <td>
+            <%= link_to "刪除", admin_position_path(p), :method => :delete,  :data => { :confirm => "Are You Sure?" }, :class => "btn btn-danger" %></td>
+
+    </tr>
+    <% end %>
+</table>
+
+<%= link_to '返回文章首頁', admin_topics_path %><br>
+<%= link_to "新增職位", new_admin_position_path %>/
+<%= link_to "職業頁面", admin_positions_path %>
+

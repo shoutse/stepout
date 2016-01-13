@@ -1,20 +1,67 @@
 class Admin::TopicsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :check_admin
+   before_action :authenticate_user!
+   before_action :check_admin
+   before_action :set_topic, :only =>[:show, :update, :edit, :destroy]
 
   layout "admin"
 
-  def index
-    @industries=Industry.all
-end
+     def show
 
-protected
+     end
+
+     def index
+       @industries = Industry.all
+       @topics = Topic.all
+
+
+     end
+
+     def new
+        @topic = Topic.new
+     end
+
+     def create
+        @topic = Topic.new(topic_params)
+        @topic=current_user.topic
+        if @topic.save
+          flash[:notice] = "新增成功"
+          redirect_to admin_topics_path
+        else
+          render :action => :new
+        end
+
+     end
+
+     def edit
+
+     end
+
+     def update
+        if @topic.update(topic_params)
+          flash[:notice] = "編輯成功"
+          redirect_to admins_topic_path
+        else
+          render :action => :edit
+        end
+     end
+
+     def destroy
+      @topic.destroy
+      flash[:alert] = "刪除成功"
+      redirect_to admin_topics_path
+
+     end
+
+    protected
 
     def check_admin
       unless current_user.admin?
-        flash[:alert]="no permission"
         raise AvtiveRecord::RecordNotFound
       end
+    end
+
+    def set_topic
+      @topic = Topic.find(params[:id])
     end
 
 
@@ -23,6 +70,7 @@ protected
        # user_name == "username" && password == "password"
      # end
   # end
+
 
 
 end

@@ -12,6 +12,18 @@ Rails.application.routes.draw do
   end
 
 
+  # namespace :admin do
+    # resources :positions do
+        # resources :industries do
+             # resources :topics
+                              # end
+                         # end
+    # resources :drafts
+    # resources :users
+                    #end
+
+
+
   resources :users
   resources :drafts
 

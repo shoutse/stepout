@@ -1,0 +1,53 @@
+<hr>
+<table class="table">
+  <tr>
+    <th>狀態：</th>
+    <th>標題：</th>
+    <th>作者：</th>
+    <th>產業：</th>
+    <th>職稱：</th>
+    <th>內文：</th>
+
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @drafts.each do |d| %>
+
+  <tr class="info-hover">
+    <td>
+     <%= check_box_tag "ids[]", d.id, false %>
+     <%= d.status %>
+    </td>
+    <td>
+        <%= d.name %>
+    </td>
+    <td>
+      <%= link_to d.user.name, user_path(d.user) %>
+    </td>
+
+    <td>
+      <%= d.industry %>
+    </td>
+
+    <td>
+      <%= d.position %>
+    </td>
+
+    <td>
+      <%= link_to "Show", admin_draft_path(d),:class => "btn btn-primary" %>
+    </td>
+    <td>
+        <%= link_to "Edit", admin_drafts_path(did: d.id), :class => "btn btn-default" %>
+
+        <%= link_to "Delete", admin_draft_path(d, :page => params[:page]),
+         :method => :delete, :data => { :confirm => "Are you sure ?" }, :class => "btn btn-danger" %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<hr>
+<%= link_to "返回管理首頁", admin_topics_path %>
+
+
