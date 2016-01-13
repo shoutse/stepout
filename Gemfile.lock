@@ -220,7 +220,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
-  mysql2 (~> 0.3.18)
+  mysql2 (~> 0.3.20)
   omniauth-facebook
   rails (= 4.2.5)
   sass-rails (~> 5.0)
