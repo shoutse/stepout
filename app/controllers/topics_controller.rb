@@ -42,5 +42,15 @@ class TopicsController < ApplicationController
   end
 
 
+  # def create
+  # 	@topic = Topic.new(topic_params)
+
+  # 	if @topic.save
+
+  # 	else
+  # 		flash.now[:alert] = @topic.errors.full_messages.join(',')
+  # 		render :new
+  # 	end
+  # end
 
 end

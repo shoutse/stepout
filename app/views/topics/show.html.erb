@@ -2,7 +2,7 @@
 			<h1 class="col-md-12"><%=@topic.name%></h1>
 		</row>
 		<row>
-			<div class="col-md-4 topicimage"><%=image_tag("space.jpg")%></div>
+			<div class="col-md-4 topicimage"><%=image_tag("gine.jpg")%></div>
 			<div class="col-md-4 topicusername"><h6><%=@topic.user.name%></h6>
 			<h6><%=@topic.user.occupation%></h6><h6><%=@topic.industry.name%></h6></div>
 			<div class="col-md-4">	<% like = @topic.find_my_like(current_user) %>
@@ -76,3 +76,69 @@
 
 			<p class="col-md-12"><%= link_to 'Back to '+@topic.position.name, topics_path(:p=>@topic.position) %></p>
 		</row>
+
+		<row>
+       <div class="col-md-12 topic-title"><h3>其他精選文章</h3></div>
+  </row>
+  <row>
+           <div class="col-md-3">
+             <div class="list">
+               <div class="list-thumb"><a href="#"><img src="http://placehold.it/150x150" alt="" class="img-circle"></a></div>
+               <div class="topic-author">姓名：阿嬤</div>
+               <div class="topic-industry">產業：無產階級</div>
+               <div class="topic-position">職稱：老佛爺</div>
+               <div class="excerpt">
+                     文章開頭：阿嬤只是睡著了
+               </div>
+                <div class="meta">
+               <div class="fa fa-wheelchair fa-3x"></div>
+                 <a href="#" class="more">阿嬤沒感覺</a>
+               </div>
+             </div>
+           </div>
+           <div class="col-md-3">
+             <div class="list">
+             <div class="list-thumb"><a href="#"><img src="http://placehold.it/150x150" alt="" class="img-circle"></a></div>
+             <div class="topic-author">姓名：阿嬤</div>
+             <div class="topic-industry">產業：無產階級</div>
+             <div class="topic-position">職稱：老佛爺</div>
+             <div class="excerpt">
+                  文章開頭：阿嬤只是睡著了
+             </div>
+               <div class="meta">
+               <div class="fa fa-wheelchair fa-3x"></div>
+               <a href="#" class="more">阿嬤沒感覺</a>
+             </div>
+             </div>
+           </div>
+            <div class="col-md-3">
+              <div class="list">
+              <div class="list-thumb"><a href="#"><img src="http://placehold.it/150x150" alt="" class="img-circle"></a></div>
+              <div class="topic-author">姓名：阿嬤</div>
+              <div class="topic-industry">產業：無產階級</div>
+              <div class="topic-position">職稱：老佛爺</div>
+              <div class="excerpt">
+                文章開頭：阿嬤只是睡著了
+              </div>
+              <div class="meta">
+                <div class="fa fa-wheelchair fa-3x"></div>
+                <a href="#" class="more">阿嬤沒感覺</a>
+              </div>
+            </div>
+            </div>
+            <div class="col-md-3">
+              <div class="list">
+              <div class="list-thumb"><a href="#"><img src="http://placehold.it/150x150" alt="" class="img-circle"></a></div>
+              <div class="topic-author">姓名：阿嬤</div>
+              <div class="topic-industry">產業：無產階級</div>
+              <div class="topic-position">職稱：老佛爺</div>
+              <div class="excerpt">
+                文章開頭：阿嬤只是睡著了
+              </div>
+              <div class="meta">
+                <div class="fa fa-wheelchair fa-3x"></div>
+                <a href="#" class="more">阿嬤沒感覺</a>
+              </div>
+              </div>
+            </div>
+      </row>

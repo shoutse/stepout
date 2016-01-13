@@ -13,6 +13,7 @@ class DraftsController < ApplicationController
 		@draft.user=current_user
 		@draft.status="未審理"
 		if @draft.save
+			flash[:notice] = "投稿成功!!"
 			redirect_to welcome_path
 		else
 			render new_draft_path		

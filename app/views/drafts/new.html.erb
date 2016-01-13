@@ -24,6 +24,12 @@
 		<%=f.label :content,"文章內容:"%>
 		<%=f.text_area :content,:class=>"form-control"%>
 	</div>
+	<div class="form-group">
+	<%= check_box_tag(:privacy) %>我同意隱私權條款
+	</div>
+	<div class="form-group">
+	<%= check_box_tag(:istrue) %>投稿內容是否屬實
+	</div>
 	<%= f.submit "送出投稿",:class=>"btn btn-primary"%>
 
 <%end%>
