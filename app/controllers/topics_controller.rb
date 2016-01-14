@@ -4,15 +4,30 @@ class TopicsController < ApplicationController
 
 		if params[:p]
 			@position=Position.find(params[:p])
-			@topics=@position.topics.page( params[:page] ).per(10)
+			@topics=@position.topics.page( params[:page] ).per(5)
 			if params[:i]
 				@industry=Industry.find(params[:i])
-				@topics=@topics.where(industry_id:params[:i]).page( params[:page] ).per(10)
+				@topics=@topics.where(industry_id:params[:i]).page( params[:page] ).per(5)
 
 			end
 		else
-			@topics=Topic.page( params[:page] ).per(10)
+			@topics=Topic.page( params[:page] ).per(5)
 		end
+
+    if params[:order]
+      if params[:order] == 'comment_count'
+        sort_by = 'comment_count DESC'
+      elsif params[:order] == 'working_time'
+        sort_by = 'working_time DESC'
+      else
+        sort_by = 'created_at'
+      end
+        
+      @topics = @topics.order(sort_by)
+    end
+
+
+
 	end
 
 	def show
