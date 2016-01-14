@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160104061659) do
+ActiveRecord::Schema.define(version: 20160114090449) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "content"
@@ -33,9 +33,12 @@ ActiveRecord::Schema.define(version: 20160104061659) do
     t.integer  "position_id"
     t.integer  "industry_id"
     t.string   "status"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "user_id"
+    t.integer  "working_time"
+    t.boolean  "privacy"
+    t.boolean  "istrue"
   end
 
   add_index "drafts", ["industry_id"], name: "index_drafts_on_industry_id"

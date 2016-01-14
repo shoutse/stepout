@@ -28,7 +28,7 @@ class DraftsController < ApplicationController
 	protected
 
 	def draft_params
-		params.require(:draft).permit(:name,:content,:answer1,:answer2,:industry_id,:position_id)
+		params.require(:draft).permit(:name,:content,:istrue,:privacy,:industry_id,:position_id,:working_time,:answer1)
 		
 	end
 

@@ -1,7 +1,10 @@
-		<row>
+
+<div class="container">		
+
+		<div class="row">
 			<h1 class="col-md-12"><%=@topic.name%></h1>
-		</row>
-		<row>
+		</div>
+		<div class="row">
 			<div class="col-md-4 topicimage"><%=image_tag("gine.jpg")%></div>
 			<div class="col-md-4 topicusername"><h6><%=@topic.user.name%></h6>
 			<h6><%=@topic.user.occupation%></h6><h6><%=@topic.industry.name%></h6></div>
@@ -18,17 +21,17 @@
 			  <%= link_to "Subscribe", subscribe_topic_path(@topic), :method => :post, :class => "btn btn-default" %>
 			  <% end %>
 			 </div>
-		</row>
+		</div>
 
-		<row>
+		<div class="row">
 			<div class="col-md-12 topiccontent">
 				<p>
 					<%=@topic.content%>
 				</p>
 			</div>
-		</row>
+		</div>
 
-		<row>
+		<div class="row">
 			<table class="col-md-12 table">
 		<tr>
 			<td>
@@ -58,8 +61,8 @@
 		</tr>
 		<%end%>
 		</table>
-		</row>
-		<row>
+		</div>
+		<div class="row">
 		<div class="col-md-12 topiccomment">
 
 				<%= form_for @comment,:url=>topic_comments_path(@topic) do |f|%>
@@ -71,16 +74,16 @@
 				<%end%>
 		</div>
 	
-		</row>
-		<row>
+		</div>
+		<div class="row">
 
 			<p class="col-md-12"><%= link_to 'Back to '+@topic.position.name, topics_path(:p=>@topic.position) %></p>
-		</row>
+		</div>
 
-		<row>
+		<div class="row">
        <div class="col-md-12 topic-title"><h3>其他精選文章</h3></div>
-  </row>
-  <row>
+  </div>
+  <div class="row">
            <div class="col-md-3">
              <div class="list">
                <div class="list-thumb"><a href="#"><img src="http://placehold.it/150x150" alt="" class="img-circle"></a></div>
@@ -141,4 +144,5 @@
               </div>
               </div>
             </div>
-      </row>
+      </div>
+</div>      
