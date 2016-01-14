@@ -106,7 +106,7 @@ body {
 @media (min-width: 768px) {
   /* Navbar positioning foo */
   .navbar-wrapper {
-    margin-top: 20px;
+    /*margin-top: 20px;*/
   }
   .navbar-wrapper .container {
     padding-right: 15px;
@@ -182,10 +182,7 @@ h2.title{
 .footer {
   background-color: black;
 }
-.footer .container{
-  width: 1160px;
-  position: relative;
-}
+
 
 .widget-footer .widget-title h4{
 color: white;
