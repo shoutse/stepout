@@ -15,6 +15,7 @@
 				<%= link_to "Like", topic_likes_path(@topic), :method => :post, :class => "btn btn-default" %>
 				<% end %>
 			 
+			 <%= like_button(:send) %>
 			 	<% if @topic.find_my_subscription(current_user) %>
 			 	<%= link_to "UnSubscribe", unsubscribe_topic_path(@topic), :method => :post, :class => "btn btn-danger" %>
 			  <% else %>

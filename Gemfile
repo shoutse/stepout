@@ -44,6 +44,9 @@ gem 'omniauth-facebook'
 gem 'bootstrap-sass'
 gem 'kaminari'
 
+gem "social-buttons", '~> 0.3'
+gem 'bootsy'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
