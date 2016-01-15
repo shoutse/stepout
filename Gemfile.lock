@@ -52,7 +52,6 @@ GEM
       remotipart (~> 1.2)
     builder (3.2.2)
     byebug (8.2.1)
-<<<<<<< HEAD
     capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
