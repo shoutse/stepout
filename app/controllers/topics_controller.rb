@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
 	def index
 		@industries=Industry.all
 
-		if params[:p]
+		if params[:position]
 			@position=Position.find(params[:p])
 			@topics=@position.topics.page( params[:page] ).per(10)
 			if params[:i]
@@ -41,6 +41,6 @@ class TopicsController < ApplicationController
 
   end
 
-
+# @topics =Topic.page(params[:page]).per(5)
 
 end

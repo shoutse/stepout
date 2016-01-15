@@ -1,0 +1,22 @@
+<hr>
+<% if @industry.errors.any? %>
+      <ul>
+        <% @industry.errors.full_messages.each do |msg| %>
+
+        <li><%= msg %></li>
+
+        <% end %>
+      </ul>
+<% end %>
+
+<%= form_for @industry, :url => admin_industry_path(@industry), method: :patch do |f| %>
+
+ <div class="form-group">
+   <%= f.label :name, "產業名稱"%>
+   <%= f.text_field :name,:required => true, :class => "form-control" %>
+ </div>
+ <div class="form-group">
+   <%= f.submit "修改", :class=> "btn btn-primary" %>
+   <%= link_to "返回管理頁", admin_topics_path %>
+</div>
+<% end %>

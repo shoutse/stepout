@@ -11,8 +11,19 @@ class Admin::TopicsController < ApplicationController
 
      def index
        @industries = Industry.all
-       @topics = Topic.all
 
+       @position = Position.all
+
+             if params[:position]
+                @position = Position.find(params[:position])
+                @drafts = @position.drafts
+             elsif params[:industry]
+                @industry = Industry.find(params[:industry])
+                @drafts = @industry.drafts
+             else
+                @drafts = Draft.all
+             end
+       @drafts =Draft.page(params[:page]).per(5)
 
      end
 
@@ -29,7 +40,6 @@ class Admin::TopicsController < ApplicationController
         else
           render :action => :new
         end
-
      end
 
      def edit
@@ -64,6 +74,9 @@ class Admin::TopicsController < ApplicationController
       @topic = Topic.find(params[:id])
     end
 
+    def topic_params
+      params.require(:topic).permit(:name, :content, :comment_count, :position_id, :industry_id, :user_id, :created_at)
+    end
 
   # def authenticate
      # authenticate_or_request_with_http_basic do |user_name, password|
@@ -71,6 +84,7 @@ class Admin::TopicsController < ApplicationController
      # end
   # end
 
-
+# @topics =@topic.page(params[:page]).per(5)
+# @drafts =@drfats.page(params[:page]).per(5)
 
 end

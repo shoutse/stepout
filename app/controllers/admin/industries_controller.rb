@@ -32,9 +32,9 @@ class Admin::IndustriesController < ApplicationController
      end
 
      def update
-          if @industry.update
+          if @industry.update(industry_params)
               flash[:alert] = "修改成功"
-              redirect_to admin_industries_path
+              redirect_to admin_topics_path
           else
               render :action => :edit
           end
@@ -44,7 +44,7 @@ class Admin::IndustriesController < ApplicationController
      def destroy
         @industry.destroy
         flash[:alert] = "刪除成功"
-        redirect_to admin_industries_path
+        redirect_to admin_topics_path
 
      end
 

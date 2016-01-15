@@ -1,9 +1,7 @@
 <h2><%= "文章標題：" + @draft.name %></h2>
 <%= "發布時間 :" %>
-<%=  @draft.created_at %>
+<%=  @draft.created_at.to_s(:short) %>
 
-
-<hr>
 
 <%#= "產業: " + @draft. %>
 <hr>

@@ -9,13 +9,13 @@
       </ul>
 <% end %>
 
-<%= form_for @position, :url => admin_positions_path do |f| %>
+<%= form_for @position, :url => admin_position_path(@position),         :method => :patch do |f| %>
 
- <div class="form-group">
+<div class="form-group">
    <%= f.label :name, "職業名稱" %>
-   <%= f.text_field :name,:required => true, :class => "form-control" %>
+   <%= f.text_field :name, :class => "form-control" %>
  </div>
  <div class="form-group">
-   <%= f.submit "新增", :class=> "btn btn-primary" %>
-</div>
+   <%= f.submit "修改", :class=> "btn btn-primary" %>
+ </div>
 <% end %>

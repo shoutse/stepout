@@ -4,11 +4,17 @@ Rails.application.routes.draw do
   get "/welcome" => "topics#welcome"
 
   namespace :admin do
-    resources :topics
-    resources :users
-    resources :positions
-    resources :industries
-    resources :drafts
+
+      resources :topics
+
+      resources :users
+      resources :positions
+      resources :industries
+      resources :drafts do
+          collection do
+            post :draft_upload
+          end
+      end
   end
 
 
@@ -25,6 +31,7 @@ Rails.application.routes.draw do
 
 
   resources :users
+
   resources :drafts
 
 

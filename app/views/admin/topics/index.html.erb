@@ -1,4 +1,80 @@
-<h1>Stepout admin Interface </h1>
+<h1>Stepout 管理後台 </h1>
+<div class="container">
+   <div class="draft-list">
+      <div class="title"><h3>待審核列表</h3></div>
+
+      職業分類：
+    <% Position.all.each do |p| %>
+    <%= link_to p.name, admin_topics_path(:position =>p) %>/
+    <% end %><br>
+
+      產業分類：
+    <% Industry.all.each do |i| %>
+    <%= link_to i.name, admin_topics_path(:industry =>i) %>/
+    <% end %><br>
+
+<%= form_tag draft_upload_admin_drafts_path do %>
+
+         <div class="row">
+            <div class="col-md-10">
+
+                  <table class="table">
+                    <tr>
+                      <th>狀態：</th>
+                      <th>職業：</th>
+                      <th>產業：</th>
+                      <th>年資：</th>
+                      <th>標題：</th>
+                      <th>作者：</th>
+                      <th>內文：</th>
+                      <th>發表時間：</th>
+                    </tr>
+
+                  <% @drafts.each do |d| %>
+
+                    <tr class="info-hover">
+                      <td>
+                          <%= check_box_tag "ids[]", d.id, false %>
+                          <%= d.status %></td>
+
+                      <td><%= d.position.name %></td>
+
+                      <td><%= d.industry.name %> </td>
+
+                      <td><%= d.duration %></td>
+
+                      <td><%= d.name %></td>
+
+                      <td>
+                          <%= link_to d.user.name, user_path(d.user) %></td>
+
+                      <td>
+                          <%= link_to "進入", admin_draft_path(d),:class => "btn btn-primary" %></td>
+
+                      <td><%= d.created_at.to_s(:short) %></td>
+
+                      <td>
+                          <%= link_to "Edit", admin_drafts_path(draft: d.id), :class => "btn btn-primary" %>
+
+                          <%= link_to "Delete", admin_draft_path(d, :page => params[:page]),
+                           :method => :delete, :data => { :confirm => "Are you sure ?" }, :class => "btn btn-danger" %>
+                      </td>
+                    </tr>
+                    <% end %>
+                  </table>
+
+<%= paginate @drafts %>
+    <%= submit_tag "Delete", :class => "btn btn-danger" %>
+    <%= submit_tag "Publish" %>
+    <% end %>
+
+            </div>
+            <%= link_to "新增Draft", new_admin_draft_path, :class => "btn btn-primary" %>
+      </div>
+
+   </div>
+</div>
+
 
 <%= link_to "新增產業", new_admin_industry_path %>
 <%= link_to "產業頁面", admin_industries_path %><br>

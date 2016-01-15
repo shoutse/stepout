@@ -12,14 +12,18 @@ class Admin::PositionsController < ApplicationController
      end
 
      def new
-          @position = Position.new
+         if params[:id]
+           @position = Position.find(params[:id])
+         else
+           @position = Position.new
+         end
      end
 
      def create
           @position = Position.new(position_params)
         if @position.save
           flash[:alert] = "新增成功"
-          redirect_to admin_positions_path
+          redirect_to admin_topics_path
         else
         render :action => :new
         end
@@ -27,12 +31,13 @@ class Admin::PositionsController < ApplicationController
 
      def edit
 
+
      end
 
      def update
-        if @position.update
+        if @position.update(position_params)
          flash[:alert] ="更新成功"
-         redirect_to admin_positions_path
+         redirect_to admin_topics_path
         else
             render :action => :edit
 
@@ -48,7 +53,7 @@ class Admin::PositionsController < ApplicationController
      end
 
 
-     private
+     protected
 
     def set_position
       @position =Position.find(params[:id])
