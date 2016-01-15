@@ -69,12 +69,12 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
-=======
+
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
->>>>>>> frankF
+
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -120,11 +120,11 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.99)
-<<<<<<< HEAD
+
     mini_magick (4.3.6)
-=======
+
     mimemagic (0.3.0)
->>>>>>> frankF
+
     mini_portile2 (2.0.0)
     minitest (5.8.3)
     multi_json (1.11.2)
