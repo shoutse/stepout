@@ -1,7 +1,7 @@
 
 
 
-				<div class="col-md-10">
+				<div class="col-md-10 topicorder">
 					排序:<%=link_to "發佈時間",topics_path(:p=>params[:p],:i=>params[:i],:order=>'created_at')%>
 					<%=link_to "回應數",topics_path(:p=>params[:p],:i=>params[:i],:order=>'comment_count')%>
 					<%=link_to "年資",topics_path(:p=>params[:p],:i=>params[:i],:order=>'working_time')%>
@@ -10,10 +10,10 @@
 <%@topics.each do |t|%>
 	<div class="col-md-10 topicbox">		
 	  <div class="row">
-	    <div class="col-md-4 topicboxphoto">
-	    		<%=image_tag("space.jpg",:class=>"img-rounded")%>
+	    <div class="col-md-2 topicboxphoto">
+	    		<%=image_tag("gine.jpg",:class=>"img-rounded")%>
 	    </div>
-	    <div class="col-md-8 topicboxmain">
+	    <div class="col-md-10 topicboxmain">
 					<div class="row">
 						<span class="col-md-8">
 							 <h2><%=link_to t.name,topic_path(t)%></h2>
@@ -33,7 +33,7 @@
 							<p><%= t.content %></p>
 						</span>
 						<span class="col-md-4">
-						  likes:<%=t.likes.size%></span>
+						<%= like_button(:send) %></span>
 						<span class="col-md-4">收藏:<%=t.subscriptions.size%>
 						</span>
 					</div>
@@ -43,9 +43,14 @@
 
 <% end %>
 
+
 <div class="row">
 
 	<div class="col-md-12 pag">
-		<%= paginate @topics %>
+
+    
+        <li><%= paginate @topics%></li>
+
+
 	</div>
 </div>
