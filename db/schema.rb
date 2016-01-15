@@ -50,11 +50,10 @@ ActiveRecord::Schema.define(version: 20160115020747) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "user_id"
-
+    t.integer  "duration"
     t.integer  "working_time"
     t.boolean  "privacy"
     t.boolean  "istrue"
-
   end
 
   add_index "drafts", ["industry_id"], name: "index_drafts_on_industry_id"
@@ -102,6 +101,7 @@ ActiveRecord::Schema.define(version: 20160115020747) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "user_id"
+    t.integer  "duration"
     t.integer  "working_time"
   end
 

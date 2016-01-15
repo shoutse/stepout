@@ -52,7 +52,6 @@ GEM
       remotipart (~> 1.2)
     builder (3.2.2)
     byebug (8.2.1)
-
     capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
@@ -70,12 +69,10 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
-
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
-
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -121,11 +118,8 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.99)
-<<<<<<< HEAD
-    mini_magick (4.3.6)
-=======
     mimemagic (0.3.0)
->>>>>>> frankF
+    mini_magick (4.3.6)
     mini_portile2 (2.0.0)
     minitest (5.8.3)
     multi_json (1.11.2)
