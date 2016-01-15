@@ -1,3 +1,4 @@
+
 <div class="container">
 
 	<h1>我要投稿</h1>
@@ -13,9 +14,9 @@
 	   <div class="form-group">
 	    <%=f.label :industry_id,"產業類別"%>
 	    <%=f.select :industry_id,Industry.all.map{|x|[x.name,x.id]},:class=>"form_control",:include_blank=>"請選擇"%>
-	  </div>  
+	  </div>
 		<div class="form-group">
-	    <%=f.label :working_time,"這份工作時間:"%>		
+	    <%=f.label :working_time,"這份工作時間:"%>
 			<%=f.number_field :working_time%>(年)
 		</div>
 		<div class="form-group">
@@ -37,3 +38,7 @@
 	<%end%>
 
 </div>
+
+
+
+

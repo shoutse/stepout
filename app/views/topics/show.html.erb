@@ -1,5 +1,5 @@
 
-<div class="container">		
+<div class="container">
 
 		<div class="row">
 			<h1 class="col-md-12"><%=@topic.name%></h1>
@@ -14,7 +14,7 @@
 				<% else %>
 				<%= link_to "Like", topic_likes_path(@topic), :method => :post, :class => "btn btn-default" %>
 				<% end %>
-			 
+
 			 	<% if @topic.find_my_subscription(current_user) %>
 			 	<%= link_to "UnSubscribe", unsubscribe_topic_path(@topic), :method => :post, :class => "btn btn-danger" %>
 			  <% else %>
@@ -47,7 +47,7 @@
 
 		<% @comments.each do |c|%>
 		<tr>
-			
+
 			<td class="commentcontent">
 				<%=c.content%>
 			</td>
@@ -73,9 +73,11 @@
 				<%= f.submit "留言",:class=>"btn btn-primary"%>
 				<%end%>
 		</div>
-	
+
+
 		</div>
 		<div class="row">
+
 
 			<p class="col-md-12"><%= link_to 'Back to '+@topic.position.name, topics_path(:p=>@topic.position) %></p>
 		</div>
@@ -145,4 +147,4 @@
               </div>
             </div>
       </div>
-</div>      
+</div>

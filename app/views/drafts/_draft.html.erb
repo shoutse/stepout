@@ -1,0 +1,33 @@
+<h1>我要投稿</h1>
+<%= form_for @draft,:url=>drafts_path do |f|%>
+
+  <div class="form-group">
+    <%=f.label :name,"標題:"%>
+    <%=f.text_field :name, :required => true, :class=>"form-control"%>
+  </div>
+   <div class="form-group">
+    <%=f.label :position_id, "職業類別"%>
+    <%=f.select :position_id, Position.all.map{|x|[x.name,x.id]}, :required => true, :class => "form_control", :include_blank=>"請選擇"%>
+  </div>
+   <div class="form-group">
+    <%=f.label :industry_id,"產業類別"%>
+    <%=f.select :industry_id,Industry.all.map{|x|[x.name,x.id]}, :required => true, :class=>"form_control",:include_blank=>"請選擇"%>
+  </div>
+
+  <div class="form-group">
+    <%=f.label :duration,"工作年資:"%>
+    <%=f.select :duration, (0..30).map {|i| [i,i] },:include_blank=>"請選擇", :required => true, :class=>"form-control" %>
+  </div>
+
+
+  <div class="form-group">
+    <%=f.label :answer2,"文章簡介:"%>
+    <%=f.text_area :answer2,:class=>"form-control"%>
+  </div>
+  <div class="form-group">
+    <%=f.label :content,"文章內容:"%>
+    <%=f.text_area :content, :required => true, :class=>"form-control"%>
+  </div>
+  <%= f.submit "送出投稿",:class=>"btn btn-primary"%>
+
+<% end %>

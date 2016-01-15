@@ -1,0 +1,35 @@
+
+
+
+<hr>
+
+
+
+
+
+
+<% @industries.each do |i| %>
+<table>
+    <tr>
+        <td><%= i.name %></td>
+
+
+
+
+
+        <td><%= link_to "編輯", edit_admin_industry_path(i),:class => "btn btn-primary" %></td>
+
+
+        <td>
+            <%= link_to "刪除", admin_industry_path(i), :method => :delete,  :data => { :confirm => "Are You Sure?" }, :class => "btn btn-danger" %></td>
+
+    </tr>
+
+            <% end %>
+
+</table>
+
+<%= link_to '新增產業', new_admin_industry_path %><br>
+<%= link_to '返回文章首頁', admin_topics_path %><br>
+<%= link_to "新增職位", new_admin_position_path %>/
+<%= link_to "職業頁面", admin_positions_path %>

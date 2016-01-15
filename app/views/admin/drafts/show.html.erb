@@ -1,0 +1,12 @@
+<h2><%= "文章標題：" + @draft.name %></h2>
+<%= "發布時間 :" %>
+<%=  @draft.created_at.to_s(:short) %>
+
+
+<%#= "產業: " + @draft. %>
+<hr>
+ <%= "發表內容： "%>
+
+    <%= simple_format(@draft.content)%>
+
+<%= link_to "返回投稿首頁", admin_drafts_path %>

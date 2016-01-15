@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
 	def index
 		@industries=Industry.all
 
-		if params[:p]
+		if params[:position]
 			@position=Position.find(params[:p])
 			@topics=@position.topics.page( params[:page] ).per(5)
 			if params[:i]
@@ -22,7 +22,7 @@ class TopicsController < ApplicationController
       else
         sort_by = 'created_at'
       end
-        
+
       @topics = @topics.order(sort_by)
     end
 
@@ -57,6 +57,7 @@ class TopicsController < ApplicationController
   end
 
 
+
   # def create
   # 	@topic = Topic.new(topic_params)
 
@@ -67,5 +68,8 @@ class TopicsController < ApplicationController
   # 		render :new
   # 	end
   # end
+
+# @topics =Topic.page(params[:page]).per(5)
+
 
 end
