@@ -1,11 +1,7 @@
 
 
 
-				<div class="col-md-10 topicorder">
-					排序:<%=link_to "發佈時間",topics_path(:p=>params[:p],:i=>params[:i],:order=>'created_at')%>
-					<%=link_to "回應數",topics_path(:p=>params[:p],:i=>params[:i],:order=>'comment_count')%>
-					<%=link_to "年資",topics_path(:p=>params[:p],:i=>params[:i],:order=>'working_time')%>
-				</div>
+
 
 <%@topics.each do |t|%>
 	<div class="col-md-10 topicbox">		

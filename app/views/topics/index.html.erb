@@ -2,15 +2,15 @@
 
 
 <div class="container">
-	<row>
+	<div class="row">
 	 	<% if @position %>
 	 	<h1 class="col-md-12 positionname"><%=@position.name%></h1>
 		<% end %>
-	</row>
-  <row>
+	</div>
+  <div class="row">
        <div class="col-md-12 topic-title"><h3>熱門精選</h3></div>
-  </row>
-  <row>
+  </div>
+  <div class="row">
            <div class="col-md-3">
              <div class="list">
                <div class="list-thumb"><a href="#"><img src="http://placehold.it/150x150" alt="" class="img-circle"></a></div>
@@ -71,8 +71,16 @@
               </div>
               </div>
             </div>
-      </row>
+      </div>
      </div>
+
+  <div class="col-md-12 topicorder">
+    排序:<%=link_to "發佈時間",topics_path(:p=>params[:p],:i=>params[:i],:order=>'created_at')%>
+    <%=link_to "回應數",topics_path(:p=>params[:p],:i=>params[:i],:order=>'comment_count')%>
+    <%=link_to "年資",topics_path(:p=>params[:p],:i=>params[:i],:order=>'working_time')%>
+  </div>
+
+
 
  	<div class="col-md-2 sidebarlist">
 			<div class="list-group">
@@ -83,11 +91,9 @@
 	</div>
 
 
- <row>
+
 					<%= render :partial => "list", :locals => { :topics => @topics } %>
 
-	</row>
-
-
 </div>
-</dvi>
+
+

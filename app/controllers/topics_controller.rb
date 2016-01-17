@@ -55,7 +55,7 @@ class TopicsController < ApplicationController
       @positions = Position.page(params[:page]).per(4)
 
   end
-
+  
 
 
   # def create

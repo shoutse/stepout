@@ -52,30 +52,28 @@
 <div class="container">
 
 <p class="bg-success"><%= flash[:notice] %></p>
-<% @positions.each do |p| %>
+
 
     <div class="row">
+    <% @positions.each do |p| %>
        <div class="col-md-3">
-<% @positions.each do |p| %>
           <div class="position-square">
             <div class="list">
                <h2 class="title"><%= link_to p.name, topics_path(:p => p.id) %>
                </h2>
-              <div class="list-thumb"><a href="#"><img src="http://placehold.it/216x194" alt=""></a></div>
+              <div class="list-thumb"><a href="#"><img src="cs.jpg" alt=""></a></div>
               <div class="date">Saturday, May 17, 2014</div>
-              <div class="excerpt">酸宗痛，只好違背坐好坐滿的承諾。
-              </div>
+              <div class="excerpt">酸宗痛，只好違背坐好坐滿的承諾。</div>
               <div class="meta">
                 <div class="fa fa-thumbs-o-up">讚</div>
                   <%= link_to "more", topics_path(:p => p.id) %>
               </div>
             </div>
-         </div><% end %>
-       </div>
+         </div>
+       </div><% end %>
 
       <%= paginate @positions %>
     </div>
-</div>
 
 
     <div class="topic-flow">
@@ -85,7 +83,7 @@
          <div class="row">
            <div class="col-md-3">
              <div class="list">
-             <div class="list-thumb"><a href="#"><img src="http://placehold.it/150x150" alt="" class="img-circle"></a></div>
+             <div class="list-thumb"><a href="#"><img src="gine.jpg" alt="" class="img-circle"></a></div>
              <div class="topic-author">姓名：阿嬤</div>
              <div class="topic-industry">產業：無產階級</div>
              <div class="topic-position">職稱：老佛爺</div>
@@ -146,7 +144,7 @@
             </div>
          </div>
      </div>
-  </div>
+
 
     <div class="activity-flow">
       <div class="activity-list"><h3>活動訊息</h3></div>
