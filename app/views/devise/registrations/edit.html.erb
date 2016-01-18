@@ -1,3 +1,5 @@
+<div class="container">
+
 <h2>修改會員資料</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -71,3 +73,5 @@
 <p>Unhappy? <%= button_to "刪除我的帳號", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+
+</div>

@@ -1,3 +1,5 @@
+
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
@@ -49,33 +51,37 @@
     </div><!-- /.carousel -->
 
 
-<div class="container">
 
-<p class="bg-success"><%= flash[:notice] %></p>
+<div id="welcome">
 
+      <div class="container">
+          <p class="bg-success"><%= flash[:notice] %></p>
+          <div class="row">
+          <% @positions.each do |p| %>
+             <div class="col-md-3">
+                <div class="position-square">
+                  <div class="list">
+                     <h2 class="title"><%= link_to p.name, topics_path(:p => p.id) %>
+                     </h2>
+                    <div class="list-thumb"><a href="#"><img src="cs.jpg" alt=""></a></div>
+                    <div class="date">Saturday, May 17, 2014</div>
+                    <div class="excerpt">酸宗痛，只好違背坐好坐滿的承諾。</div>
+                    <div class="meta">
+                      <div class="fa fa-thumbs-o-up">讚</div>
+                        <%= link_to "more", topics_path(:p => p.id) %>
+                    </div>
+                    </div>
+                </div>
+              </div><% end %>
 
-    <div class="row">
-    <% @positions.each do |p| %>
-       <div class="col-md-3">
-          <div class="position-square">
-            <div class="list">
-               <h2 class="title"><%= link_to p.name, topics_path(:p => p.id) %>
-               </h2>
-              <div class="list-thumb"><a href="#"><img src="cs.jpg" alt=""></a></div>
-              <div class="date">Saturday, May 17, 2014</div>
-              <div class="excerpt">酸宗痛，只好違背坐好坐滿的承諾。</div>
-              <div class="meta">
-                <div class="fa fa-thumbs-o-up">讚</div>
-                  <%= link_to "more", topics_path(:p => p.id) %>
-              </div>
+            <%= paginate @positions %>
             </div>
-         </div>
-       </div><% end %>
-
-      <%= paginate @positions %>
-    </div>
+      </div>
 
 
+  
+    <div id="line"></div>
+    <div class="container">
     <div class="topic-flow">
         <div class="topic-title">
           <h3>人氣分享</h3>
@@ -91,7 +97,7 @@
                   文章開頭：阿嬤只是睡著了
              </div>
                <div class="meta">
-               <div class="fa fa-wheelchair fa-3x"></div>
+              
                <a href="#" class="more">阿嬤沒感覺</a>
              </div>
              </div>
@@ -107,7 +113,7 @@
                   文章開頭：阿嬤只是睡著了
              </div>
                <div class="meta">
-               <div class="fa fa-wheelchair fa-3x"></div>
+          
                <a href="#" class="more">阿嬤沒感覺</a>
              </div>
              </div>
@@ -122,7 +128,7 @@
                 文章開頭：阿嬤只是睡著了
               </div>
               <div class="meta">
-                <div class="fa fa-wheelchair fa-3x"></div>
+ 
                 <a href="#" class="more">阿嬤沒感覺</a>
               </div>
             </div>
@@ -137,15 +143,17 @@
                 文章開頭：阿嬤只是睡著了
               </div>
               <div class="meta">
-                <div class="fa fa-wheelchair fa-3x"></div>
                 <a href="#" class="more">阿嬤沒感覺</a>
               </div>
               </div>
             </div>
          </div>
      </div>
+     </div>
 
 
+    <div id="line"></div>
+    <div class="container">
     <div class="activity-flow">
       <div class="activity-list"><h3>活動訊息</h3></div>
       <div class="row">
@@ -197,7 +205,6 @@
     </div>
   </div>
 </div>
-
 
 
 

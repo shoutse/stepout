@@ -6,10 +6,10 @@
 <%@topics.each do |t|%>
 	<div class="col-md-10 topicbox">		
 	  <div class="row">
-	    <div class="col-md-2 topicboxphoto">
+	    <div class="col-md-2 col-xs-2 topicboxphoto">
 	    		<%=image_tag("gine.jpg",:class=>"img-rounded")%>
 	    </div>
-	    <div class="col-md-10 topicboxmain">
+	    <div class="col-md-10 col-xs-10 topicboxmain">
 					<div class="row">
 						<span class="col-md-8">
 							 <h2><%=link_to t.name,topic_path(t)%></h2>
@@ -26,7 +26,7 @@
 	        </div>
 					<div class="row">
 						<span class="col-md-8">
-							<p><%= t.content %></p>
+							<p><%= t.description %></p>
 						</span>
 						<span class="col-md-4">
 						<%= like_button(:send) %></span>

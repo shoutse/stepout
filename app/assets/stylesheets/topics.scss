@@ -49,7 +49,7 @@ height:150px;
 }
 .topicboxphoto img{
 padding-left:0;
-height:150px;
+max-height:150px;
 max-width:150px;
 /*width:150px;*/
 margin-left:0;
@@ -71,7 +71,6 @@ margin-left:0;
 	padding-left: 200px;
 }
 
-
 .sidebarlist{
 	margin-bottom:800px;
 }
@@ -80,7 +79,7 @@ margin-left:0;
 .topicboxmain{
 	/*border-style:solid;*/
 	background-color:#fff;
-	height:150px;
+	max-height:150px;
 	margin-right:0px;
 	border-radius:10px;
 }
@@ -99,8 +98,26 @@ width:150px;
 
 
 
+@media (max-width: 400px){
 
 
 
+.topicboxphoto{
+display:none;
+}
 
+	
+}
+
+
+
+#welcome{
+	background-color:white;
+	margin:10px;
+}
+
+#line{
+	background-color:#E2DDDD;
+	height:10px;
+}
 
