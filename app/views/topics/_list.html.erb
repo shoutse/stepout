@@ -14,7 +14,7 @@
 						<span class="col-md-8">
 							 <h2><%=link_to t.name,topic_path(t)%></h2>
 						</span>
-						<span class="col-md-4">
+						<span class="col-md-4" id="topictime">
 						   <%=t.created_at.to_s(:short)%>
 						</span>
 						<span class="col-md-8">
@@ -28,9 +28,9 @@
 						<span class="col-md-8">
 							<p><%= t.description %></p>
 						</span>
-						<span class="col-md-4">
-						<%= like_button(:send) %></span>
-						<span class="col-md-4">收藏:<%=t.subscriptions.size%>
+						<span class="col-md-4" id="fblike">
+						<%= like_button(:show) %></span>
+						<span class="col-md-4" id="subcount">收藏人數:<%=t.subscriptions.size%>人
 						</span>
 					</div>
 			</div>

@@ -51,11 +51,27 @@
     </div><!-- /.carousel -->
 
 
+  <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+     <% if flash[:notice].present? %>
+        <div class="alert alert-success" role="alert"><%= flash[:notice] %>
+        </div>
+        <% end %>
+
+      <% if flash[:alert].present? %>
+        <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
+        <% end %>
+    </div>
+  </div>
+</div>
+
+
 
 <div id="welcome">
 
       <div class="container">
-          <p class="bg-success"><%= flash[:notice] %></p>
+
           <div class="row">
           <% @positions.each do |p| %>
              <div class="col-md-3">
