@@ -68,31 +68,11 @@
 
 <div class="container">
 
-<p class="bg-success"><%= flash[:notice] %></p>
-
-<% @positions.each do |p| %>
     <div class="row">
-       <div class="col-md-3">
-
-          <div class="position-square">
-            <div class="list">
-               <h2 class="title"><%= link_to p.name, topics_path(:p => p.id) %>
-               </h2>
-              <div class="list-thumb"><a href="#"><img src="http://placehold.it/216x194" alt=""></a></div>
-              <div class="date">Saturday, May 17, 2014</div>
-              <div class="excerpt">酸宗痛，只好違背坐好坐滿的承諾。
-              </div>
-              <div class="meta">
-                <div class="fa fa-thumbs-o-up">讚</div>
-                  <%= link_to "more", topics_path(:p => p.id) %>
-              </div>
-            </div>
-         </div>
-       </div>
-      <% end %>
-    </div><%= paginate @positions %>
-
-</div>
+       <div class="col-md-3 welcomeposition">
+          <a><img tag=""></a>
+      </div>
+  </div>
 
 
 
@@ -193,10 +173,8 @@
             </div>
          </div>
      </div>
-<<<<<<< HEAD
-     </div>
-=======
->>>>>>> frankG
+
+
 
 
     <div id="line"></div>
