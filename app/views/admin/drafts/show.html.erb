@@ -1,12 +1,93 @@
-<h2><%= "文章標題：" + @draft.name %></h2>
-<%= "發布時間 :" %>
-<%=  @draft.created_at.to_s(:short) %>
+<%= form_for @draft, :url => admin_draft_path(@draft),:method =>:patch do |f| %>
 
 
-<%#= "產業: " + @draft. %>
+<div class="container">
+      <div class="draft-container">
+          <div class="row">
+              <div class="col-md-12 userbox">
+                  <h1><%= @draft.name %></h1>
+              </div>
+
+                  <div class="col-md-3 userboxphoto">
+                      <%= image_tag @draft.user.photo.url(:medium), :class=>"img-circle" %>
+                  </div>
+                  <div class="col-md-9 userboxinfo">
+                    <div class="row">
+                      <span class="col-md-12">
+                        <h3><%=@draft.user.name%></h3>
+                      </span>
+
+                      <span class="col-md-12">
+                        <p><h6><%= @draft.industry.name%></h6></p>
+                      </span>
+
+                      <span class="col-md-12">
+                        <h6><%= @draft.position.name%></h6>
+                      </span>
+
+                      <span class="col-md-12">
+                        <h6>年資：<%= @draft.working_time %></h6>
+                      </span>
+
+                      <span class="col-md-12">
+                        <p>
+                          <%= @draft.created_at.to_s(:short) %>
+                        </p>
+                      </span>
+                  </div>
+               </div>
+          </div>
+     </div>
+  </div>
+
+
+<hr>
+<div class="draft-content-container">
+    <div class="content-row">
+          <div class="col-md-12 contentbox">
+             <%= simple_format(@draft.content)%>
+          </div>
+
+
+<!-- <div class="form-group">
+   <%#= f.submit :class=> "btn btn-primary" %>
+ </div> -->
+<% end %>
+
+
+
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="draft-box">
+        <div class="row">
+          <div class="col-md-3">
+            <h2><%#= "" + @draft.name %></h2>
+          </div>
+        </div>
+      </div>
+        <div class="row">
+          <div class="col-md-3">
+
+          </div>
+
+        </div>
+
+  </div>
+</div>
+</div> -->
+<%#= @draft.created_at.to_s(:short) %>
+<%#= @draft.position.name %>
+<%#= @
+
+
+
+
 <hr>
  <%= "發表內容： "%>
+ <table>
+    <%#= simple_format(@draft.content)%>
 
-    <%= simple_format(@draft.content)%>
 
-<%= link_to "返回投稿首頁", admin_drafts_path %>
+<%= link_to "返回管理首頁", admin_topics_path, :class => "btn btn-primary" %>

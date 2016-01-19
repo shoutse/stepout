@@ -52,11 +52,11 @@
 <div class="container">
 
 <p class="bg-success"><%= flash[:notice] %></p>
-<% @positions.each do |p| %>
 
+<% @positions.each do |p| %>
     <div class="row">
        <div class="col-md-3">
-<% @positions.each do |p| %>
+
           <div class="position-square">
             <div class="list">
                <h2 class="title"><%= link_to p.name, topics_path(:p => p.id) %>
@@ -70,18 +70,17 @@
                   <%= link_to "more", topics_path(:p => p.id) %>
               </div>
             </div>
-         </div><% end %>
+         </div>
        </div>
-
-      <%= paginate @positions %>
-    </div>
+      <% end %>
+    </div><%= paginate @positions %>
 </div>
 
 
     <div class="topic-flow">
-        <div class="topic-title">
-          <h3>人氣分享</h3>
-        </div>
+      <div class="topic-title">
+        <h3>人氣分享</h3>
+      </div>
          <div class="row">
            <div class="col-md-3">
              <div class="list">
@@ -146,7 +145,7 @@
             </div>
          </div>
      </div>
-  </div>
+
 
     <div class="activity-flow">
       <div class="activity-list"><h3>活動訊息</h3></div>
@@ -197,8 +196,6 @@
       </div>
      </div>
     </div>
-  </div>
-</div>
 
 
 

@@ -93,15 +93,20 @@
 
       </div>
     </div>
-<hr>
+<!-- <div class="row"> -->
 <div class="col-md-2 sidebarlist">
       <div class="list-group">
         <%= link_to "新增產業", new_admin_industry_path, :class => "btn btn-primary" %>
+        <%= link_to "新增職位", new_admin_position_path, :class => "btn btn-primary" %>
+        <%= link_to "編輯產業", admin_industries_path, :class => "btn btn-primary" %>
+        <%= link_to "編輯職位", admin_positions_path, :class => "btn btn-primary" %>
         <%@industries.each do |i|%>
         <%=link_to i.name,admin_topics_path(:i=>i.id,:p=>params[:p]),:class=>"list-group-item"%>
+
         <% end %>
       </div>
   </div>
+  <!-- </div> -->
 
       <div class="container">
        <!-- <div class="row"> -->

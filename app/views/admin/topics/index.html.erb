@@ -41,7 +41,7 @@
 
                       <td><%= d.industry.name %> </td>
 
-                      <td><%= d.duration %></td>
+                      <td><%= d.working_time %></td>
 
                       <td><%= d.name %></td>
 
@@ -54,7 +54,7 @@
                       <td><%= d.created_at.to_s(:short) %></td>
 
                       <td>
-                          <%= link_to "Edit", admin_drafts_path(draft: d.id), :class => "btn btn-primary" %>
+                          <%= link_to "Edit", edit_admin_draft_path(d), :class => "btn btn-primary" %>
 
                           <%= link_to "Delete", admin_draft_path(d, :page => params[:page]),
                            :method => :delete, :data => { :confirm => "Are you sure ?" }, :class => "btn btn-danger" %>
@@ -70,9 +70,81 @@
 
             </div>
             <%= link_to "新增Draft", new_admin_draft_path, :class => "btn btn-primary" %>
-      </div>
 
-   </div>
+
+<hr>
+   <div class="topic-list">
+      <div class="title"><h3>已發表文章列表</h3></div>
+
+      職業分類：
+    <% Position.all.each do |p| %>
+    <%= link_to p.name, admin_topics_path(:position =>p) %>/
+    <% end %><br>
+
+      產業分類：
+    <% Industry.all.each do |i| %>
+    <%= link_to i.name, admin_topics_path(:industry =>i) %>/
+    <% end %><br>
+
+
+
+         <div class="row">
+            <div class="col-md-10">
+
+                  <table class="table">
+                    <tr>
+
+                      <th>職業：</th>
+                      <th>產業：</th>
+                      <th>年資：</th>
+                      <th>標題：</th>
+                      <th>作者：</th>
+                      <th>內文：</th>
+                      <th>發表時間：</th>
+                    </tr>
+
+                  <% @topics.each do |t| %>
+
+                    <tr class="info-hover">
+
+
+                      <td><%= t.position.name %></td>
+
+                      <td><%= t.industry.name %> </td>
+
+                      <td><%= t.working_time %></td>
+
+                      <td><%= t.name %></td>
+
+                      <td>
+                          <%= link_to t.user.name, user_path(t.user) %></td>
+
+                      <td>
+                          <%= link_to "進入", admin_topic_path(t),:class => "btn btn-primary" %></td>
+
+                      <td><%= t.created_at.to_s(:short) %></td>
+
+                      <td>
+                          <%= link_to "Edit", edit_admin_topic_path(t), :class => "btn btn-primary" %>
+
+                          <%= link_to "Delete", admin_topic_path(t, :page => params[:page]),
+                           :method => :delete, :data => { :confirm => "Are you sure ?" }, :class => "btn btn-danger" %>
+                      </td>
+                    </tr>
+                    <% end %>
+                  </table>
+
+<%= paginate @topics %>
+
+
+
+            </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>
 
 
