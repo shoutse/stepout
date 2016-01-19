@@ -8,6 +8,8 @@ class Admin::DraftsController < ApplicationController
      end
 
     def show
+      #   if params[:draft_id]
+      # @draft = Draft.find(:draft_id)
 
     end
 
@@ -38,6 +40,7 @@ class Admin::DraftsController < ApplicationController
 
              drafts.each { |d| d.destroy }
              flash[:alert] = "刪除成功"
+            redirect_to admin_topics_path
 
             elsif params[:commit] == "Publish"
 
@@ -96,7 +99,7 @@ class Admin::DraftsController < ApplicationController
       end
 
       def draft_params
-        params.require(:draft).permit(:name, :content, :answer1, :answer2, :industry_id, :position_id, :duration, :user_id)
+        params.require(:draft).permit(:name, :privacy, :istrue, :content, :answer1, :answer2, :industry_id, :position_id, :working_time, :duration, :user_id, :bootsy_image_gallery_id)
       end
 
     end

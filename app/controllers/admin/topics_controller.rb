@@ -3,9 +3,13 @@ class Admin::TopicsController < ApplicationController
    before_action :check_admin
    before_action :set_topic, :only =>[:show, :update, :edit, :destroy]
 
-  layout "admin"
+  layout "admin", :only => [:index]
 
      def show
+
+       @comments = @topic.comments
+       @comment = Comment.new
+
 
      end
 
@@ -17,30 +21,34 @@ class Admin::TopicsController < ApplicationController
              if params[:position]
                 @position = Position.find(params[:position])
                 @drafts = @position.drafts
+                @topics = @position.topics
              elsif params[:industry]
                 @industry = Industry.find(params[:industry])
                 @drafts = @industry.drafts
+                @topics = @industry.topics
              else
                 @drafts = Draft.all
+                @topics = Topic.all
              end
-       @drafts =Draft.page(params[:page]).per(5)
+          @drafts = @drafts.page(params[:page]).per(5)
+          @topics = @topics.page(params[:page]).per(5)
 
      end
 
-     def new
-        @topic = Topic.new
-     end
+     # def new
+     #    @topic = Topic.new
+     # end
 
-     def create
-        @topic = Topic.new(topic_params)
-        @topic=current_user.topic
-        if @topic.save
-          flash[:notice] = "新增成功"
-          redirect_to admin_topics_path
-        else
-          render :action => :new
-        end
-     end
+     # def create
+     #    @topic = Topic.new(topic_params)
+     #    @topic=current_user.topic
+     #    if @topic.save
+     #      flash[:notice] = "新增成功"
+     #      redirect_to admin_topics_path
+     #    else
+     #      render :action => :new
+     #    end
+     # end
 
      def edit
 
@@ -49,7 +57,7 @@ class Admin::TopicsController < ApplicationController
      def update
         if @topic.update(topic_params)
           flash[:notice] = "編輯成功"
-          redirect_to admins_topic_path
+          redirect_to admin_topic_path
         else
           render :action => :edit
         end
@@ -58,7 +66,7 @@ class Admin::TopicsController < ApplicationController
      def destroy
       @topic.destroy
       flash[:alert] = "刪除成功"
-      redirect_to admin_topics_path
+      redirect_to :back
 
      end
 
