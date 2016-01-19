@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
       		devise_parameter_sanitizer.for(:sign_up) <<:former_occupation
       		devise_parameter_sanitizer.for(:sign_up) <<:role
           devise_parameter_sanitizer.for(:sign_up) <<:photo
+          devise_parameter_sanitizer.for(:sign_up) <<:introduction
           devise_parameter_sanitizer.for(:account_update) <<:photo
       		devise_parameter_sanitizer.for(:account_update) <<:name
       		devise_parameter_sanitizer.for(:account_update)<<:birthday
@@ -26,6 +27,7 @@ class ApplicationController < ActionController::Base
       		devise_parameter_sanitizer.for(:account_update)<<:school
       		devise_parameter_sanitizer.for(:account_update)<<:former_occupation
       		devise_parameter_sanitizer.for(:account_update)<<:role
+          devise_parameter_sanitizer.for(:account_update)<<:introduction
     	end
 
      def set_topic

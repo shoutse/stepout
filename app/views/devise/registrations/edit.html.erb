@@ -59,9 +59,15 @@
     <%= f.text_field :school %></div>
     </div>
     <div class="field">
-    <div><%= f.label :former_occupation,"前工作" %><br />
+    <div><%= f.label :former_occupation,"上一份工作職稱" %><br />
     <%= f.text_field :former_occupation %></div>
     </div>
+
+    <div class="field">
+    <div><%= f.label :introduction,"自我介紹" %><br />
+    <%= f.text_area :introduction,:class=>"form-control"%></div>
+    </div>
+
 
   <div class="actions">
     <%= f.submit "更新" %>
