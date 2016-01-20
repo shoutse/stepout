@@ -2,26 +2,35 @@
 <div class="container">
 
 		<div class="row">
-			<h1 class="col-md-12"><%=@topic.name%></h1>
+			<h1 class="col-md-12 topich1"><%=@topic.name%></h1>
 		</div>
-		<div class="row">
-			<div class="col-md-4 topicimage"><%=image_tag("gine.jpg")%></div>
-			<div class="col-md-4 topicusername"><h6><%=@topic.user.name%></h6>
-			<h6><%=@topic.user.occupation%></h6><h6><%=@topic.industry.name%></h6><h6>年資: <%=@topic.working_time%> 年</h6></div>
-			<div class="col-md-4">	<% like = @topic.find_my_like(current_user) %>
-				<% if like %>
-				<%= link_to "Unlike", topic_like_path(@topic, like), :method => :delete, :class => "btn btn-danger" %>
-				<% else %>
-				<%= link_to "Like", topic_likes_path(@topic), :method => :post, :class => "btn btn-default" %>
-				<% end %>
+		<div class="row topicpeoplebox">
+			<div class="col-md-2 topicimage"><%=image_tag("gine.jpg")%></div>
+				<div class="col-md-10">
+					<div class="row">
+							<div class="col-md-10 topicusername"><spna class="topicpeoplename"><%=@topic.user.name%></spna><span class="topicpeople"><%=@topic.user.occupation%></span><span class="topicpeople"><%=@topic.industry.name%></span><span class="topicpeople">年資: <%=@topic.working_time%> 年</span></div>
+							<div class="col-md-2">
 
-			 	<% if @topic.find_my_subscription(current_user) %>
-			 	<%= link_to "UnSubscribe", unsubscribe_topic_path(@topic), :method => :post, :class => "btn btn-danger" %>
-			  <% else %>
-			  <%= link_to "Subscribe", subscribe_topic_path(@topic), :method => :post, :class => "btn btn-default" %>
-			  <% end %>
-			 </div>
+					 	<% if @topic.find_my_subscription(current_user) %>
+					 	<%= link_to "取消收藏", unsubscribe_topic_path(@topic), :method => :post, :class => "btn btn-danger" %>
+					  <% else %>
+					  <%= link_to "收藏文章", subscribe_topic_path(@topic), :method => :post, :class => "btn btn-default" %>
+					  <% end %>
+					 		</div>
+			 	</div>
+				 	<div class="row">
+				 		
+						<div class="col-md-9 topicintro">
+							<p>
+								<%if @topic.user.introduction%>
+									<%=@topic.user.introduction%>
+								<%end%>
+							</p>
+						</div>
+					</div>	
+				</div>
 		</div>
+		
 
 		<div class="row">
 			<div class="col-md-12 topiccontent">
@@ -35,7 +44,7 @@
 			<table class="col-md-12 table">
 		<tr>
 			<td>
-				內容
+				留言內容
 			</td>
 			<td>
 				留言者
@@ -62,6 +71,8 @@
 		<%end%>
 		</table>
 		</div>
+
+
 		<div class="row">
 		<div class="col-md-12 topiccomment">
 
@@ -71,80 +82,39 @@
 				<%= f.text_area :content,:class=>"form-control"%>
 				</div>
 				<%= f.submit "留言",:class=>"btn btn-primary"%>
-				<%end%>
+				<%end%>	
 		</div>
-
 
 		</div>
 		<div class="row">
+	 	<% if @position %>
+	 	<h1 class="col-md-12 positionname"><%=@position.name%></h1>
+		<% end %>
+	</div>
+         <div class="container marketing">
 
+      <!-- Three columns of text below the carousel -->
+      <h1 id="welcomeh1">其他精選文章</h1>
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="gine.jpg" alt="Generic placeholder image" width="140" height="140">
+          <h2>劉小佑</h2>
+          <p>Liskyo CEO</p>
+          <p></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <h2>馬克祖克伯</h2>
+          <p>FB CEO</p>
+   
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <h2>馬雲</h2>
+          <p>阿里巴巴創辦人</p>
 
-			<p class="col-md-12"><%= link_to 'Back to '+@topic.position.name, topics_path(:p=>@topic.position) %></p>
-		</div>
-
-		<div class="row">
-       <div class="col-md-12 topic-title"><h3>其他精選文章</h3></div>
-  </div>
-  <div class="row">
-           <div class="col-md-3">
-             <div class="list">
-               <div class="list-thumb"><a href="#"><img src="http://placehold.it/150x150" alt="" class="img-circle"></a></div>
-               <div class="topic-author">姓名：阿嬤</div>
-               <div class="topic-industry">產業：無產階級</div>
-               <div class="topic-position">職稱：老佛爺</div>
-               <div class="excerpt">
-                     文章開頭：阿嬤只是睡著了
-               </div>
-                <div class="meta">
-               <div class="fa fa-wheelchair fa-3x"></div>
-                 <a href="#" class="more">阿嬤沒感覺</a>
-               </div>
-             </div>
-           </div>
-           <div class="col-md-3">
-             <div class="list">
-             <div class="list-thumb"><a href="#"><img src="http://placehold.it/150x150" alt="" class="img-circle"></a></div>
-             <div class="topic-author">姓名：阿嬤</div>
-             <div class="topic-industry">產業：無產階級</div>
-             <div class="topic-position">職稱：老佛爺</div>
-             <div class="excerpt">
-                  文章開頭：阿嬤只是睡著了
-             </div>
-               <div class="meta">
-               <div class="fa fa-wheelchair fa-3x"></div>
-               <a href="#" class="more">阿嬤沒感覺</a>
-             </div>
-             </div>
-           </div>
-            <div class="col-md-3">
-              <div class="list">
-              <div class="list-thumb"><a href="#"><img src="http://placehold.it/150x150" alt="" class="img-circle"></a></div>
-              <div class="topic-author">姓名：阿嬤</div>
-              <div class="topic-industry">產業：無產階級</div>
-              <div class="topic-position">職稱：老佛爺</div>
-              <div class="excerpt">
-                文章開頭：阿嬤只是睡著了
-              </div>
-              <div class="meta">
-                <div class="fa fa-wheelchair fa-3x"></div>
-                <a href="#" class="more">阿嬤沒感覺</a>
-              </div>
-            </div>
-            </div>
-            <div class="col-md-3">
-              <div class="list">
-              <div class="list-thumb"><a href="#"><img src="http://placehold.it/150x150" alt="" class="img-circle"></a></div>
-              <div class="topic-author">姓名：阿嬤</div>
-              <div class="topic-industry">產業：無產階級</div>
-              <div class="topic-position">職稱：老佛爺</div>
-              <div class="excerpt">
-                文章開頭：阿嬤只是睡著了
-              </div>
-              <div class="meta">
-                <div class="fa fa-wheelchair fa-3x"></div>
-                <a href="#" class="more">阿嬤沒感覺</a>
-              </div>
-              </div>
-            </div>
-      </div>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+		<hr>
+</div>
 </div>
