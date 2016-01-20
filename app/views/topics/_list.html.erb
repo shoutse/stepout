@@ -6,10 +6,10 @@
 <%@topics.each do |t|%>
 	<div class="col-md-10 topicbox">		
 	  <div class="row">
-	    <div class="col-md-2 col-xs-2 topicboxphoto">
+	    <div class="col-md-3 col-xs-3 topicboxphoto">
 	    		<%=image_tag("gine.jpg",:class=>"img-rounded")%>
 	    </div>
-	    <div class="col-md-10 col-xs-10 topicboxmain">
+	    <div class="col-md-9 col-xs-9 topicboxmain">
 					<div class="row">
 						<span class="col-md-8">
 							 <h2><%=link_to t.name,topic_path(t)%></h2>
@@ -17,7 +17,7 @@
 						<span class="col-md-4" id="topictime">
 						   <%=t.created_at.to_s(:short)%>
 						</span>
-						<span class="col-md-8">
+						<span class="col-md-8" id="topicintro">
 						   <%=t.user.name%>
 						   <%=t.user.occupation%>
 						   <%=t.industry.name%>

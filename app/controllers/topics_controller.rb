@@ -4,14 +4,14 @@ class TopicsController < ApplicationController
 
 		if params[:position]
 			@position=Position.find(params[:p])
-			@topics=@position.topics.page( params[:page] ).per(5)
+			@topics=@position.topics.page( params[:page] ).per(4)
 			if params[:i]
 				@industry=Industry.find(params[:i])
-				@topics=@topics.where(industry_id:params[:i]).page( params[:page] ).per(5)
+				@topics=@topics.where(industry_id:params[:i]).page( params[:page] ).per(4)
 
 			end
 		else
-			@topics=Topic.page( params[:page] ).per(5)
+			@topics=Topic.page( params[:page] ).per(4)
 		end
 
     if params[:order]
