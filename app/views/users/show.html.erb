@@ -3,12 +3,33 @@
 <div class="container">
 
         <div class="row">
-           <div class="col-md-9 userboxmain">
-
-                      <%= image_tag @user.photo.url(:medium), :class=>"img-circle" %>
-                   <!-- </div> -->
+           <div class="col-md-10 userboxmain">
+              <div class="row">
+                <div class="col-md-3 userboxphoto">
+                  <%= image_tag @user.photo.url(:medium)%>
+                </div>
+                <div class="col-md-9 userifo">
+                  <div class="row">
+                    <div class="col-md-12 username">
+                      <div class="userboxname"><%=@user.name%></div>
+                    </div>
+                    <div class="col-md-12 userposition">
+                      <div class="userboxposition"><%=@user.occupation%></div>
+                    </div>
+                    <div class="col-md-12 userboxintro">
+                        <p>刑事局去年破獲中和地區「天保安」中醫診所涉嫌詐領健保費的案件，警方經過追查之後，最近又發現這家診所和保險業務員，以及患者串通，利用偽造的診斷證明等文件</p>
+                    </div>                                        
+                  </div>
+                </div>
+              </div>    
             </div>
-            <div class="col-md-3 userboxsub"></div>
+            <div class="col-md-2 userboxsub">
+              <div class="row">
+                <div class="col-md-12 userboxsubt">畢業學校:<%=@user.school%></div>
+                <div class="col-md-12 userboxsuba" >主修:<%=@user.major%></div>
+                <div class="col-md-12 userboxsuba">上一份工作:<%=@user.former_occupation%></div>
+              </div>
+            </div>
         </div>
        
 
