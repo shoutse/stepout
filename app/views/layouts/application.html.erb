@@ -47,6 +47,11 @@
                 <%=link_to "我要投稿",new_session_path(:user)%>
                 <%end%>
                 </li>
+                <li>
+                  <% if current_user && current_user.admin? %>
+                    <%= link_to "Admin", admin_topics_path %>
+                  <% end %>
+                </li>
               </ul>
 
 
@@ -78,7 +83,6 @@
         </nav>
 
       </div>
-    </div>
 
 
 

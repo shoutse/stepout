@@ -29,7 +29,7 @@
 
 
     <div class="navbar-wrapper">
-      <div class="container">
+
 
         <nav class="navbar navbar-inverse navbar-static-top">
           <div class="container">
@@ -41,7 +41,11 @@
                 <span class="icon-bar"></span>
               </button>
 
-              <a class="navbar-brand" href="http://localhost:3000/welcome"><h1 class="fa fa-gg-circle">Stepout</h1></a>
+              <a class="navbar-brand-admin" href="http://localhost:3000/admin/topics">
+                <span class="stepout-logo">
+                  <%=image_tag("Stepout Logo.png") %>管理
+                </span>
+              </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
@@ -54,11 +58,24 @@
                   </ul>
                 </li>
 
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">產業類別 <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                     <% Industry.all.each do |i|%>
+                     <li><%=link_to i.name,admin_topics_path(:i=>i.id)%></li>
+                     <%end%>
+                  </ul>
+                </li>
+
+                <li class="frontend">
+                  <%= link_to "前台", welcome_path %>
+                </li>
+
                 <li>
-                <%if current_user%>
-                <%=link_to "我要投稿",new_draft_path%>
+                <%if current_user && current_user.admin?%>
+                <%=link_to "新增草稿",new_admin_draft_path%>
                 <%else%>
-                <%=link_to "我要投稿",new_session_path(:user)%>
+                <%=link_to "新增草稿",new_session_path(:user)%>
                 <%end%>
                 </li>
               </ul>
@@ -94,12 +111,12 @@
       </div>
     </div>
 <!-- <div class="row"> -->
-<div class="col-md-2 sidebarlist">
+<div class="col-md-2 admin-sidebarlist">
       <div class="list-group">
-        <%= link_to "新增產業", new_admin_industry_path, :class => "btn btn-primary" %>
-        <%= link_to "新增職位", new_admin_position_path, :class => "btn btn-primary" %>
-        <%= link_to "編輯產業", admin_industries_path, :class => "btn btn-primary" %>
-        <%= link_to "編輯職位", admin_positions_path, :class => "btn btn-primary" %>
+        <%= link_to "新增產業", new_admin_industry_path, :class => "list-group-item" %>
+        <%= link_to "新增職位", new_admin_position_path, :class => "list-group-item" %>
+        <%= link_to "編輯產業", admin_industries_path, :class => " list-group-item" %>
+        <%= link_to "編輯職位", admin_positions_path, :class => " list-group-item" %>
         <%@industries.each do |i|%>
         <%=link_to i.name,admin_topics_path(:i=>i.id,:p=>params[:p]),:class=>"list-group-item"%>
 

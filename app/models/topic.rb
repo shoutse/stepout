@@ -2,14 +2,14 @@ class Topic < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :industry
 	belongs_to :position
-	has_many :comments
+	has_many :comments, :dependent => :destroy
 
-  has_many :likes
+  has_many :likes, :dependent => :destroy
 	has_many :like_users, :through => :likes, :source => :user
 
-  has_many :subscriptions
+  has_many :subscriptions, :dependent => :destroy
 	has_many :subscription_users,:through=>:subscriptions,:source=>:user
-
+  include Bootsy::Container
 
   def find_my_subscription(u)
      if u

@@ -1,4 +1,3 @@
-<h1>Stepout 管理後台 </h1>
 <div class="container">
    <div class="draft-list">
       <div class="title"><h3>待審核列表</h3></div>
@@ -28,6 +27,8 @@
                       <th>作者：</th>
                       <th>內文：</th>
                       <th>發表時間：</th>
+                      <th></th>
+                      <th></th>
                     </tr>
 
                   <% @drafts.each do |d| %>
@@ -62,29 +63,33 @@
                     </tr>
                     <% end %>
                   </table>
-
 <%= paginate @drafts %>
+
     <%= submit_tag "Delete", :class => "btn btn-danger" %>
     <%= submit_tag "Publish" %>
     <% end %>
 
             </div>
-            <%= link_to "新增Draft", new_admin_draft_path, :class => "btn btn-primary" %>
+
 
 
 <hr>
-   <div class="topic-list">
-      <div class="title"><h3>已發表文章列表</h3></div>
 
-      職業分類：
-    <% Position.all.each do |p| %>
-    <%= link_to p.name, admin_topics_path(:position =>p) %>/
-    <% end %><br>
+          <div class="topic-list">
+            <div class="col-md-10">
+              <div class="title"><h3>已發表文章列表</h3></div>
 
-      產業分類：
-    <% Industry.all.each do |i| %>
-    <%= link_to i.name, admin_topics_path(:industry =>i) %>/
-    <% end %><br>
+              職業分類：
+            <% Position.all.each do |p| %>
+            <%= link_to p.name, admin_topics_path(:position =>p) %>/
+            <% end %><br>
+            </div>
+          <div class="col-md-10">
+              產業分類：
+            <% Industry.all.each do |i| %>
+            <%= link_to i.name, admin_topics_path(:industry =>i) %>/
+            <% end %><br>
+          </div>
 
 
 
@@ -108,7 +113,7 @@
                     <tr class="info-hover">
 
 
-                      <td><%= t.position.name %></td>
+                      <td><%= t.position.try(:name) %></td>
 
                       <td><%= t.industry.name %> </td>
 
@@ -134,8 +139,8 @@
                     <% end %>
                   </table>
 
-<%= paginate @topics %>
 
+<%= paginate @topics %>
 
 
             </div>

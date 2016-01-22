@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160119120347) do
+ActiveRecord::Schema.define(version: 20160120205004) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20160119120347) do
 
   create_table "drafts", force: :cascade do |t|
     t.string   "name"
-    t.string   "content"
+    t.text     "content"
     t.string   "answer1"
     t.string   "answer2"
     t.string   "answer3"
@@ -50,11 +50,10 @@ ActiveRecord::Schema.define(version: 20160119120347) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "user_id"
+    t.integer  "duration"
     t.integer  "working_time"
     t.boolean  "privacy"
     t.boolean  "istrue"
-    t.integer  "duration"
-
   end
 
   add_index "drafts", ["industry_id"], name: "index_drafts_on_industry_id"
@@ -104,7 +103,6 @@ ActiveRecord::Schema.define(version: 20160119120347) do
     t.integer  "user_id"
     t.integer  "duration"
     t.integer  "working_time"
-    t.integer  "duration"
     t.string   "description"
   end
 

@@ -49,8 +49,10 @@ class Admin::DraftsController < ApplicationController
                  @topic.name = d.name
                  @topic.position_id = d.position_id
                  @topic.industry_id = d.industry_id
+                 @topic.content = d.content
+                 @topic.description = d.answer1
                  @topic.user_id = d.user_id
-                 @topic.duration = d.duration
+                 @topic.working_time = d.working_time
                  @topic.save
                d.status = "已上傳"
                d.save

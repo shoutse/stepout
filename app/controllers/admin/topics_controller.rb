@@ -83,7 +83,7 @@ class Admin::TopicsController < ApplicationController
     end
 
     def topic_params
-      params.require(:topic).permit(:name, :content, :comment_count, :position_id, :industry_id, :user_id, :created_at)
+      params.require(:topic).permit(:name, :content, :comment_count, :position_id, :industry_id, :user_id, :created_at, :bootsy_image_gallery_id)
     end
 
   # def authenticate

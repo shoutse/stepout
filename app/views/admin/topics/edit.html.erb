@@ -1,16 +1,42 @@
-<div class="container">
-   <div class="row">
-      <div class="col-md-12">
-         <div class="topic-title">
-             <h1><%= @draft.name %></h1>
-         </div>
-      </div>
+<hr>
+<% if @topic.errors.any? %>
+      <ul>
+        <% @topic.errors.full_messages.each do |msg| %>
 
-      <div class="col-md-3">
-         <div class="draft-img"><%=image_tag("space.jpg")%></div>
-      </div>
-      <div class="col-md-4">
+        <li><%= msg %></li>
 
-      </div>
-   </div>
-</div>
+        <% end %>
+      </ul>
+<% end %>
+
+<%= form_for @topic, :url => admin_topic_path(@topic), method: :patch do |f| %>
+
+  <div class="form-group">
+      <%=f.label :name,"標題:"%>
+      <%=f.text_field :name, :required => true, :class=>"form-control"%>
+    </div>
+     <div class="form-group">
+      <%=f.label :position_id,"職業類別"%>
+      <%=f.select :position_id,Position.all.map{|x|[x.name,x.id]},:class=>"form_control",:include_blank=>"請選擇"%>
+    </div>
+     <div class="form-group">
+      <%=f.label :industry_id,"產業類別"%>
+      <%=f.select :industry_id,Industry.all.map{|x|[x.name,x.id]},:class=>"form_control",:include_blank=>"請選擇"%>
+    </div>
+    <div class="form-group">
+      <%=f.label :working_time,"這份工作時間:"%>
+      <%=f.number_field :working_time%>(年)
+    </div>
+    <div class="form-group">
+      <%=f.label :description,"文章簡介:"%>
+      <%=f.text_area :description,:class=>"form-control"%>
+    </div>
+    <div class="form-group">
+      <%=f.label :content,"文章內容:"%>
+      <%=f.bootsy_area :content, :class=>"form-control",:id=>"draftcontent"%>
+    </div>
+    <div class="form-group">
+       <%= f.submit "修改", :class=> "btn btn-primary" %>
+       <%= link_to "返回管理頁", admin_topics_path %>
+    </div>
+    <% end %>

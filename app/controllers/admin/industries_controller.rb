@@ -1,5 +1,6 @@
 class Admin::IndustriesController < ApplicationController
       before_action :authenticate_user!
+      before_action :check_admin
 
       before_action :set_industry, :only => [:show, :edit, :update, :destroy]
 
@@ -53,6 +54,12 @@ class Admin::IndustriesController < ApplicationController
      def set_industry
         @industry = Industry.find(params[:id])
      end
+
+     def check_admin
+      unless current_user.admin?
+        raise AvtiveRecord::RecordNotFound
+      end
+    end
 
      def industry_params
        params.require(:industry).permit(:name)
