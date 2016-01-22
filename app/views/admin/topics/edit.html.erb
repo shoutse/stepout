@@ -1,12 +1,20 @@
+<div class="container">
+   <div class="row">
+      <div class="col-md-12">
+         <div class="topic-title">
+             <h1><%= @topic.name %></h1>
+         </div>
+      </div>
+   </div>
+</div>
+
 <hr>
 <% if @topic.errors.any? %>
-      <ul>
-        <% @topic.errors.full_messages.each do |msg| %>
-
-        <li><%= msg %></li>
-
-        <% end %>
-      </ul>
+  <ul>
+    <% @topic.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
 <% end %>
 
 <%= form_for @topic, :url => admin_topic_path(@topic), method: :patch do |f| %>
