@@ -49,6 +49,7 @@ gem 'bootstrap-sass'
 gem 'kaminari'
 
 gem "social-buttons", '~> 0.3'
+gem 'social-share-button'
 gem 'bootsy'
 
 group :development, :test do

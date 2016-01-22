@@ -29,7 +29,7 @@
 							<p><%= t.description %></p>
 						</span>
 						<span class="col-md-4" id="fblike">
-						<%= like_button(:show) %></span>
+						<%= social_share_button_tag(t.name) %></span>
 						<span class="col-md-4" id="subcount">收藏人數:<%=t.subscriptions.size%>人
 						</span>
 					</div>
