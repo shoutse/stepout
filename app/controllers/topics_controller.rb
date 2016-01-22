@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
 
-  before_actio :load_position_and_industry
+  before_action :load_position_and_industry
 
 	def index
 
