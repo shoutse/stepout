@@ -17,6 +17,7 @@ class Admin::UsersController < ApplicationController
      end
 
      def update
+      # [CR] ????
         if @user.save
           flash[:alert] = "修改成功"
           redirect_to admin_users

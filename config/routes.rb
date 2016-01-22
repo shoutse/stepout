@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
 
-      resources :topics
+      resources :topics, :except => [:new,:create]
 
       resources :users
       resources :positions

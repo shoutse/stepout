@@ -1,4 +1,8 @@
 class Admin::DraftsController < ApplicationController
+
+  # [CR] consider to extract the AdminController
+  # put same behaviors to it (like: check_admin, assign layout)
+
   before_action :authenticate_user!
   before_action :check_admin
   before_action :set_draft, :only=>[:show, :edit, :update, :destroy]
@@ -18,18 +22,18 @@ class Admin::DraftsController < ApplicationController
     end
 
     def create
-     @draft = current_user.drafts.new(draft_params)
-     if current_user.role == "admin"
-       @draft.status= "小編"
-     end
-     if @draft.save
+      @draft = current_user.drafts.new(draft_params)
 
-      redirect_to admin_topics_path
-    else
-      render :new
+      if current_user.role == "admin"
+        @draft.status= "小編"
+      end
+
+      if @draft.save
+        redirect_to admin_topics_path
+      else
+        render :new
+      end
     end
-             #raise
-           end
 
            def draft_upload
             ids = Array( params[:ids] )
@@ -45,6 +49,10 @@ class Admin::DraftsController < ApplicationController
             elsif params[:commit] == "Publish"
 
               drafts.each do |d|
+
+                # @topic = Topic.copy_from_draft(draft)
+                # @topic.save
+
                  @topic = Topic.new
                  @topic.name = d.name
                  @topic.position_id = d.position_id

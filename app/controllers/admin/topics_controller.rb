@@ -32,7 +32,8 @@ class Admin::TopicsController < ApplicationController
              end
           @drafts = @drafts.page(params[:page]).per(5)
           @topics = @topics.page(params[:page]).per(5)
-
+      # [CR] reuse the class method of Topic.search
+      # @topics = Topic.search(params)
      end
 
      # def new

@@ -19,18 +19,21 @@
 					 		</div>
 			 	</div>
 				 	<div class="row">
-				 		
+
 						<div class="col-md-9 topicintro">
 							<p>
 								<%if @topic.user.introduction%>
 									<%=@topic.user.introduction%>
 								<%end%>
+
+                <% #[CR] can print it directly %>
+                <%#= @topic.user.instruction %>
 							</p>
 						</div>
-					</div>	
+					</div>
 				</div>
 		</div>
-		
+
 
 		<div class="row">
 			<div class="col-md-12 topiccontent">
@@ -82,7 +85,7 @@
 				<%= f.text_area :content,:class=>"form-control"%>
 				</div>
 				<%= f.submit "留言",:class=>"btn btn-primary"%>
-				<%end%>	
+				<%end%>
 		</div>
 
 		</div>
@@ -106,7 +109,7 @@
           <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
           <h2>馬克祖克伯</h2>
           <p>FB CEO</p>
-   
+
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">

@@ -9,6 +9,7 @@
   </ul>
 <% end %>
 
+<%# can use partial 'form' %>
 <%= form_for @industry, :url => admin_industry_path(@industry), method: :patch do |f| %>
 
   <div class="form-group">

@@ -9,7 +9,9 @@
     </div>
      <div class="form-group">
       <%=f.label :position_id,"職業類別"%>
-      <%=f.select :position_id,Position.all.map{|x|[x.name,x.id]},:class=>"form_control",:required => true,:include_blank=>"請選擇"%>
+
+      <%#= extract to helper, like: f.select :position_id, position_options %>
+      <%=f.select :position_id, Position.all.map{ |x| [x.name, x.id] },:class=>"form_control",:required => true,:include_blank=>"請選擇"%>
     </div>
      <div class="form-group">
       <%=f.label :industry_id,"產業類別"%>

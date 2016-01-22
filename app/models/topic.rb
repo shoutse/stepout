@@ -28,6 +28,25 @@ class Topic < ActiveRecord::Base
      end
   end
 
+#[CR]--index
+# def self.search(params)
+#     topics = Topic.all
+#     topics = topics.where(industry_id: params[:i]) if params[:i]
+#     topics = topics.where(position_id: params[:p]) if params[:p]
+
+#     sort_by = case params[:order]
+#     when 'comment_count'
+#       'comment_count DESC'
+#     when 'working_time'
+#       'working_time DESC'
+#     else
+#       'created_at'
+#     end
+
+#     topics = topics.order(sort_by)
+
+#     topics
+#   end
 
 
 end
