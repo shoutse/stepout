@@ -1,3 +1,4 @@
+<% # can use: form_for [:admin, @draft] do |f| %>
 <%= form_for @draft, :url => admin_draft_path(@draft),:method =>:patch do |f| %>
 
 
@@ -45,6 +46,7 @@
 <div class="draft-content-container">
     <div class="content-row">
           <div class="col-md-12 contentbox">
+          <%# use sanitize %>
              <%= simple_format(@draft.content)%>
           </div>
 

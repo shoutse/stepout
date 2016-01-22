@@ -1,4 +1,7 @@
 class TopicsController < ApplicationController
+
+  before_actio :load_position_and_industry
+
 	def index
 
 		@industries=Industry.all
@@ -71,5 +74,8 @@ class TopicsController < ApplicationController
 
 # @topics =Topic.page(params[:page]).per(5)
 
-
+  def load_position_and_industry
+    @position = Position.find(params[:p]) if params[:p]
+    @industry = Industry.find(params[:i]) if params[:i]
+  end
 end
