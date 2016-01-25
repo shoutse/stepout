@@ -23,7 +23,7 @@ class TopicsController < ApplicationController
       elsif params[:order] == 'working_time'
         sort_by = 'working_time DESC'
       else
-        sort_by = 'created_at'
+        sort_by = 'created_at DESC'
       end
 
       @topics = @topics.order(sort_by)

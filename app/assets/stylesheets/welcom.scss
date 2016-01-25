@@ -1,6 +1,7 @@
 .welcomeposition{
 width:250px;	
-margin:20px;
+margin:70px;
+margin-top:50px;
 }
 
 .welcomeposition img{
@@ -10,7 +11,7 @@ margin:20px;
 
 .wpdescription{
 	width:250px;
-	height:100px;
+	height:200px;
 	display:block;
 	background-color:#fff;
 	border-style:solid;
@@ -29,11 +30,12 @@ max-width:250px;
 margin-left:0px;
 margin-right:0px;
 padding:0px;
+margin-bottom:100px;
 }
 
 .welcomeac img{
-	width:580px;
-	height:200px;
+	width:650px;
+	height:300px;
 	margin-left:0px;
 margin-right:0px;
 padding:0px;
@@ -50,4 +52,13 @@ padding:0px;
 
 #p3change{
  display:none;	
+}
+
+#welcomeh1{
+	text-align:center;
+	margin-top:50px;
+}
+
+#welcomeh5{
+	text-align:center;
 }
