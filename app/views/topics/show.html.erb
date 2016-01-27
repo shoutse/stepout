@@ -5,7 +5,7 @@
 			<h1 class="col-md-12 topich1"><%=@topic.name%></h1>
 		</div>
 		<div class="row topicpeoplebox">
-			<div class="col-md-2 topicimage"><%= image_tag @topic.user.photo.url(:medium)%></div>
+			<div class="col-md-2 topicimage"><%=link_to image_tag(@topic.user.photo.url(:medium)),user_path(@topic.user)%></div>
 				<div class="col-md-10">
 					<div class="row">
 							<div class="col-md-10 topicusername">
