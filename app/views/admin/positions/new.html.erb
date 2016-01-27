@@ -12,6 +12,11 @@
 <%= form_for @position, :url => admin_positions_path do |f| %>
 
  <div class="form-group">
+   <%= f.label :photo, "圖片" %>
+   <%= f.file_field :photo %>
+ </div>
+
+ <div class="form-group">
    <%= f.label :name, "職業名稱" %>
    <%= f.text_field :name,:required => true, :class => "form-control" %>
  </div>

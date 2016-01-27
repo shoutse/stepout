@@ -3,7 +3,7 @@ class Admin::IndustriesController < ApplicationController
       before_action :check_admin
 
       before_action :set_industry, :only => [:show, :edit, :update, :destroy]
-
+layout "admin"
      def index
         @industries = Industry.all
      end
@@ -35,7 +35,7 @@ class Admin::IndustriesController < ApplicationController
      def update
           if @industry.update(industry_params)
               flash[:alert] = "修改成功"
-              redirect_to admin_topics_path
+              redirect_to admin_industries_path
           else
               render :action => :edit
           end
@@ -45,7 +45,7 @@ class Admin::IndustriesController < ApplicationController
      def destroy
         @industry.destroy
         flash[:alert] = "刪除成功"
-        redirect_to admin_topics_path
+        redirect_to admin_industries_path
 
      end
 
@@ -62,7 +62,7 @@ class Admin::IndustriesController < ApplicationController
     end
 
      def industry_params
-       params.require(:industry).permit(:name)
+       params.require(:industry).permit(:name, :photo)
      end
 
 end

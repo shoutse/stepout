@@ -1,0 +1,44 @@
+
+<div class="container">
+
+  <h1>我要投稿</h1>
+  <%= form_for d do |f|%>
+    <div class="form-group">
+      <%=f.label :name,"標題:"%>
+      <%=f.text_field :name, :required => true, :class=>"form-control"%>
+    </div>
+     <div class="form-group">
+      <%=f.label :position_id,"職業類別"%>
+      <%=f.select :position_id,Position.all.map{|x|[x.name,x.id]},:class=>"form_control",:required => true,:include_blank=>"請選擇"%>
+    </div>
+     <div class="form-group">
+      <%=f.label :industry_id,"產業類別"%>
+      <%=f.select :industry_id,Industry.all.map{|x|[x.name,x.id]},:class=>"form_control", :required => true, :include_blank=>"請選擇"%>
+    </div>
+    <div class="form-group">
+      <%=f.label :working_time,"這份工作時間:"%>
+      <%=f.number_field :working_time, :required => true %>(年)
+    </div>
+    <div class="form-group">
+      <%=f.label :answer1,"文章簡介:"%>
+      <%=f.text_area :answer1, :required => true, :class=>"form-control"%>
+    </div>
+    <div class="form-group">
+      <%=f.label :content,"文章內容:"%>
+      <%=f.bootsy_area :content, :class=>"form-control",:id=>"draftcontent"%>
+    </div>
+    <div class="form-group">
+    <%= f.check_box :privacy%>我同意<%=link_to "隱私權條款","http://www.stepout.site/privacy.html",:target => "_blank"%>
+    </div>
+    <div class="form-group">
+    <%= f.check_box :istrue, :required => true %>投稿內容是否屬實
+    </div>
+    <%= f.submit "送出投稿",:class=>"btn btn-primary"%>
+    <%= link_to "取消", :back, :class => "btn btn-danger" %>
+  <% end %>
+<hr>
+</div>
+
+
+
+

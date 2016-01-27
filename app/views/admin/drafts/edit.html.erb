@@ -11,7 +11,7 @@
 
 <%= form_for @draft, :url => admin_draft_path(@draft), method: :patch do |f| %>
 
-  <div class="form-group">
+    <div class="form-group">
       <%=f.label :name,"標題:"%>
       <%=f.text_field :name, :required => true, :class=>"form-control"%>
     </div>

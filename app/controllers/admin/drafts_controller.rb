@@ -6,7 +6,7 @@ class Admin::DraftsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_admin
   before_action :set_draft, :only=>[:show, :edit, :update, :destroy]
-
+layout "admin"
      def index
       @drafts = Draft.all
      end
@@ -40,14 +40,13 @@ class Admin::DraftsController < ApplicationController
             # drafts = ids.map{ |i| Draft.find_by_id(i) }.compact
             drafts = Draft.where(id: ids)
 
-            if params[:commit] == "Delete"
+            if params[:commit] == "核選刪除"
 
              drafts.each { |d| d.destroy }
              flash[:alert] = "刪除成功"
             redirect_to admin_topics_path
 
-            elsif params[:commit] == "Publish"
-
+            elsif params[:commit] == "核選發佈"
               drafts.each do |d|
 
                 # @topic = Topic.copy_from_draft(draft)
@@ -62,15 +61,14 @@ class Admin::DraftsController < ApplicationController
                  @topic.user_id = d.user_id
                  @topic.working_time = d.working_time
                  @topic.save
-               d.status = "已上傳"
+               d.status = "已發佈"
                d.save
 
                flash[:notice] = "上傳成功"
-
               end
 
               redirect_to admin_topics_path
-           end
+            end
          end
 
 

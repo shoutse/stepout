@@ -1,30 +1,39 @@
-<div class="container">
-   <div class="draft-list">
-      <div class="title"><h3>待審核列表</h3></div>
+<div class="topic-container">
+  <div class="draft-list">
+    <div class="row">
+      <div class="col-md-10">
 
-      職業分類：
-    <% Position.all.each do |p| %>
-    <%= link_to p.name, admin_topics_path(:position =>p) %>/
-    <% end %><br>
+       <div class="title"><h3>待審核列表</h3></div>
 
-      產業分類：
-    <% Industry.all.each do |i| %>
-    <%= link_to i.name, admin_topics_path(:industry =>i) %>/
-    <% end %><br>
+            職業分類：
+          <% Position.all.each do |p| %>
+          <%= link_to p.name, admin_topics_path(:position =>p) %>/
+          <% end %><br>
+      </div>
+      <div class="col-md-10">
+
+            產業分類：
+          <% Industry.all.each do |i| %>
+          <%= link_to i.name, admin_topics_path(:industry =>i) %>/
+          <% end %><br>
+      </div>
 
 <%= form_tag draft_upload_admin_drafts_path do %>
 
-         <div class="row">
-            <div class="col-md-10">
 
-                  <table class="table">
+          <div class="col-md-10">
+                  <table class="table draft">
                     <tr>
                       <th>狀態：</th>
-                      <th>職業：</th>
-                      <th>產業：</th>
+                      <th>
+                        <span class="btn btn-primary" href="#"><i class="fa fa-user "></i> User</span>
+                      </th>
+                      <th>職位：</th>
                       <th>年資：</th>
-                      <th>標題：</th>
-                      <th>作者：</th>
+                      <th>產業：</th>
+                      <th>
+                        標題：
+                      </th>
                       <th>內文：</th>
                       <th>發表時間：</th>
                       <th></th>
@@ -38,62 +47,113 @@
                           <%= check_box_tag "ids[]", d.id, false %>
                           <%= d.status %></td>
 
-                      <td><%= d.position.name %></td>
+                      <td>
+                           <div class="user-img">
+                            <%= link_to user_path(d.user) do %>
+                           <span><%= image_tag d.user.photo(:sm), :class => 'img-circle'%>
+                           </span>
+                            <% end %>
+                           </div>
+                      </td>
 
-                      <td><%= d.industry.name %> </td>
+                      <td><%= d.position.name %> </td>
 
                       <td><%= d.working_time %></td>
 
-                      <td><%= d.name %></td>
+                      <td><%= d.industry.name %></td>
 
                       <td>
-                          <%= link_to d.user.name, user_path(d.user) %></td>
+                        <%= d.name %>
+                      </td>
 
                       <td>
-                          <%= link_to "進入", admin_draft_path(d),:class => "btn btn-primary" %></td>
+                          <%= link_to "進入", admin_draft_path(d),:class => "btn btn-primary fa fa-file-text-o" %>
+                          <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal_<%= d.id %>">Preview</button>
+
+<!-- Modal -->
+<div id="myModal_<%= d.id %>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"> 標題：<%= d.name %></h4>
+      </div>
+      <div class="modal-body">
+
+        <div class="row">
+          <div class="col-md-3 topicimage"><%= image_tag d.user.photo.url(:thumb)%></div>
+          <div class="col-md-9 topicusername"><h6><%=d.user.name%></h6>
+            <h6><%=d.user.occupation%></h6><h6><%=d.industry.name%></h6><h6>年資: <%=d.working_time%> 年</h6></div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-12 topiccontent">
+            <p>
+              <%= d.content.html_safe %>
+            </p>
+          </div>
+        </div>
+      </div> <!-- body-->
+
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+
+    </div>  <!--content -->
+  </div>
+</div>
+
+                      </td>
 
                       <td><%= d.created_at.to_s(:short) %></td>
 
                       <td>
-                          <%= link_to "Edit", edit_admin_draft_path(d), :class => "btn btn-primary" %>
+                          <%= link_to "Edit", edit_admin_draft_path(d), :class => "btn btn-primary fa fa-pencil fa-pull-left" %>
 
                           <%= link_to "Delete", admin_draft_path(d, :page => params[:page]),
-                           :method => :delete, :data => { :confirm => "Are you sure ?" }, :class => "btn btn-danger" %>
+                           :method => :delete, :data => { :confirm => "Are you sure ?" },:class=>"btn btn-danger fa fa-trash-o fa-pull-right" %>
                       </td>
                     </tr>
-                    <% end %>
-                  </table>
-<%= paginate @drafts %>
+                  <% end %>
+                </table>
 
-    <%= submit_tag "Delete", :class => "btn btn-danger" %>
-    <%= submit_tag "Publish" %>
+
+
+    <%= submit_tag "核選刪除", :class => "btn btn-danger" %>
+    <%= submit_tag "核選發佈", :class => "btn btn-primary"%>
     <% end %>
 
-            </div>
+
+
+            <%= paginate @drafts %>
 
 
 
-<hr>
 
-          <div class="topic-list">
-            <div class="col-md-10">
+        <div class="topic-list">
+          <div class="col-md-10">
+
               <div class="title"><h3>已發表文章列表</h3></div>
 
               職業分類：
             <% Position.all.each do |p| %>
-            <%= link_to p.name, admin_topics_path(:position =>p) %>/
+            <%= link_to p.name, admin_topics_path(:position_topics =>p) %>/
             <% end %><br>
             </div>
+
           <div class="col-md-10">
               產業分類：
             <% Industry.all.each do |i| %>
-            <%= link_to i.name, admin_topics_path(:industry =>i) %>/
+            <%= link_to i.name, admin_topics_path(:industry_topics =>i) %>/
             <% end %><br>
           </div>
 
 
 
-         <div class="row">
+
             <div class="col-md-10">
 
                   <table class="table">
@@ -139,22 +199,18 @@
                     <% end %>
                   </table>
 
-
-<%= paginate @topics %>
-
-
             </div>
-
+         </div>
         </div>
+                    <div class="col-md-10">
+                        <%= paginate @topics %>
+                    </div>
 
-      </div>
-    </div>
   </div>
 </div>
 
+<div class="col-md-10">
 
-<%= link_to "新增產業", new_admin_industry_path %>
-<%= link_to "產業頁面", admin_industries_path %><br>
-<%= link_to "新增職位", new_admin_position_path %>
-<%= link_to "職業頁面", admin_positions_path %><br>
-<%= link_to "文章管理", admin_drafts_path %>
+<%= link_to "草稿管理", admin_drafts_path %>
+</div>
+</div>
