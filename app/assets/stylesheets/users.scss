@@ -7,8 +7,12 @@
 	height:220px;
 	border-style:solid;
 	border-width:1px;
+	border-color:#EEEEEE;
 	margin-top:20px;
-	background-color:#fff;
+	background-image:url("stepout.png");
+
+
+
 
 }
 
@@ -17,7 +21,8 @@
 	margin-top:20px;
 	border-style:solid;
 	border-width:1px;
-	background-color:#fff;		
+	border-color:#EEEEEE;
+	background-image:url("stepout.png");	
 }
 
 
@@ -39,8 +44,10 @@
 }
 
 .userboxposition{
-	font-size:20px;
+	font-size:18px;
 	margin:5px;
+	margin-top:10px;
+	margin-left:10px;
 }
 
 
@@ -53,11 +60,13 @@
 .userboxsuba{
 	font-size:16px;
 	margin-top:10px;
+	margin-left:20px;
 
 }
 .userboxsubt{
 	font-size:16px;
-	margin-top:70px;
+	margin-top:40px;
+	margin-left:20px;
 
 }
 
@@ -71,4 +80,8 @@
 
 .userposition{
 	
+}
+
+#suba{
+	color:gray;
 }

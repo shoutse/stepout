@@ -94,8 +94,8 @@ width:auto;
 }
 
 .topicimage img{
-height:150px;
-width:150px;
+height:180px;
+width:auto;
 }
 
 .topicimage {
@@ -159,6 +159,8 @@ display:none;
 .topicpeople{
 	font-size:16px;
 	margin:10px;
+	color:gray;
+	text-align:right;
 
 }
 
@@ -169,7 +171,8 @@ display:none;
 
 .topicintro{
 	font-size:14px;
-	margin:10px;
+	margin:20px;
+	margin-right:40px;
 }
 
 .topicpeoplebox{
@@ -177,13 +180,16 @@ display:none;
 	border-style:solid;
 	border-width:1px;
 	border-color:#EEEEEE;	
-	background-color:#fff;	
+	background-color:#fff;
+	overflow:scroll;	
 }
+
+
 
 .topiccontent{
 	margin-top:50px;
 	margin-bottom:50px;
-	height:700px;
+	height:1200px;
 	font-size:20px;
 	border-style:solid;
 	border-width:1px;
@@ -198,4 +204,11 @@ display:none;
 	margin:25px;
 }
 
-  
+.subbtn{
+	margin-top:20px;
+	margin-bottom:20px;
+  }
+
+.topicx{
+	margin-top:20px;
+}

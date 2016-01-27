@@ -30,7 +30,7 @@
 						</span>
 						<span class="col-md-4" id="fblike">
 						<%= social_share_button_tag(t.name,:url=>topic_url(t))%></span>
-						<span class="col-md-4" id="subcount">收藏人數:<%=t.subscriptions.size%>人
+						<span class="col-md-4" id="subcount"><%=image_tag("heart.jpg")%>收藏:<%=t.subscriptions.size%>
 						</span>
 					</div>
 			</div>
