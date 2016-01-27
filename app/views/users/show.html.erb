@@ -39,7 +39,8 @@
 <% if @user==current_user %>
 <%@str="我的文章"%>
 <%else%>
-<% @str=@user.email+"的文章"%>
+
+<% @str=(@user.name+"的文章")||(@user.email+"的文章")%>
 <%end%>
 <div class="usercollection">
   <div class="row">
