@@ -31,12 +31,27 @@
 	height:300px;
 	margin-bottom:50px;
 	border-radius:10px;
-	font-size:25px;
 	background-color:#fff;
 	border-style:solid;
 	border-width:1px;
 	border-color:#EEEEEE;
 }
+
+.topicname{
+font-size:25px;
+}
+
+.topicbox a{
+	color:black;
+}
+
+.topicdes{
+	margin-top:20px;
+	font-size:22px;
+}
+
+
+
 
 
 .topicorder{
@@ -52,8 +67,8 @@ height:200px;
 }
 .topicboxphoto img{
 margin:40px;
-max-height:200px;
-max-width:200px;
+height:200px;
+width:auto;
 /*width:150px;*/
 
 }
@@ -94,8 +109,8 @@ max-width:200px;
 }
 
 .topicimage img{
-height:150px;
-width:150px;
+height:180px;
+width:auto;
 }
 
 .topicimage {
@@ -151,14 +166,14 @@ display:none;
 	font-size:20px;
 }
 
-#topicintro{
-	font-size:20px;
 
-}
+
 
 .topicpeople{
 	font-size:16px;
 	margin:10px;
+	color:gray;
+	text-align:right;
 
 }
 
@@ -167,23 +182,33 @@ display:none;
 	margin:10px;
 }
 
-.topicintro{
-	font-size:14px;
-	margin:10px;
+#topicintro{
+	font-size:16px;
+	margin:5px;
+	margin-right:40px;
 }
+
+#topicintro span{
+	margin-right:10px;
+}
+
+
 
 .topicpeoplebox{
 
 	border-style:solid;
 	border-width:1px;
 	border-color:#EEEEEE;	
-	background-color:#fff;	
+	background-color:#fff;
+	overflow:scroll;	
 }
+
+
 
 .topiccontent{
 	margin-top:50px;
 	margin-bottom:50px;
-	height:700px;
+	height:1200px;
 	font-size:20px;
 	border-style:solid;
 	border-width:1px;
@@ -198,4 +223,12 @@ display:none;
 	margin:25px;
 }
 
-  
+.subbtn{
+	margin-top:20px;
+	margin-bottom:20px;
+  }
+
+
+
+
+

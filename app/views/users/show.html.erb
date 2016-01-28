@@ -11,13 +11,13 @@
                 <div class="col-md-9 userifo">
                   <div class="row">
                     <div class="col-md-12 username">
-                      <div class="userboxname"><%=@user.name%></div>
+                      <div class="userboxname"><b><%=@user.name%></b></div>
                     </div>
                     <div class="col-md-12 userposition">
                       <div class="userboxposition"><%=@user.occupation%></div>
                     </div>
                     <div class="col-md-12 userboxintro">
-                        <p>刑事局去年破獲中和地區「天保安」中醫診所涉嫌詐領健保費的案件，警方經過追查之後，最近又發現這家診所和保險業務員，以及患者串通，利用偽造的診斷證明等文件</p>
+                        <p><%=@user.introduction%></p>
                     </div>                                        
                   </div>
                 </div>
@@ -25,9 +25,9 @@
             </div>
             <div class="col-md-2 userboxsub">
               <div class="row">
-                <div class="col-md-12 userboxsubt">畢業學校:<%=@user.school%></div>
-                <div class="col-md-12 userboxsuba" >主修:<%=@user.major%></div>
-                <div class="col-md-12 userboxsuba">上一份工作:<%=@user.former_occupation%></div>
+                <div class="col-md-12 userboxsubt"><small id="suba"><i>畢業學校:</i></small><br><%=@user.school%></div>
+                <div class="col-md-12 userboxsuba" ><small id="suba"><i>主修:</i></small><br><%=@user.major%></div>
+                <div class="col-md-12 userboxsuba"><small id="suba"><i>上一份工作:</i></small><br><%=@user.former_occupation%></div>
               </div>
             </div>
         </div>
@@ -36,29 +36,31 @@
 
 
 
-
 <% if @user==current_user %>
 <%@str="我的文章"%>
 <%else%>
-<% @str=@user.email+"的文章"%>
+
+<% @str=(@user.name+"的文章")||(@user.email+"的文章")%>
 <%end%>
 <div class="usercollection">
-  <row>
+  <div class="row">
     <span class="col-md-4">
-        <h3><%=link_to "收藏文章",user_path(params[:id])%></h3>
+        <h3><%=image_tag("heart.jpg")%><%=link_to "收藏文章",user_path(params[:id])%></h3>
     </span>
     <span class="col-md-4">
-       <h3> <%=link_to @str,user_path(params[:id],:me=>"me")%></h3>
+       <h3><%=image_tag("writing.jpg")%><%=link_to @str,user_path(params[:id],:me=>"me")%></h3>
     </span>
     <% if @user==current_user%>
     <span class="col-md-4">
-      <h3><%=link_to "帳號管理",edit_registration_path(:user)%></h3>
+      <h3><%=image_tag("people.png")%><%=link_to "帳號管理",edit_registration_path(:user)%></h3>
     <% end %>
     </span>
-  </row>
+  </div>
 </div>
+<hr>
+
 
  <%= render :partial => "topics/list", :locals => { :topics => @topics } %>
 
-
+<hr>
 </div>
