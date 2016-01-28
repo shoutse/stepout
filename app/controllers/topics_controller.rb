@@ -1,10 +1,8 @@
 class TopicsController < ApplicationController
 
-<<<<<<< HEAD
+
   before_action :load_position_and_industry
-=======
-  before_action :load_position_and_industry, only: :index
->>>>>>> frankJ
+
 
 	def index
 
