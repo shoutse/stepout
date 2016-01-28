@@ -1,16 +1,20 @@
 <div class="topic-container">
   <div class="draft-list">
     <div class="row">
-      <div class="col-md-10">
+      <div class="col-md-12">
 
-       <div class="title"><h3>待審核列表</h3></div>
+        <div class="drafts-header">
+          <h2><span class="label label-default">待審核草稿列表</span></h2>
+        </div>
+      </div>
 
+      <div class="col-md-12">
             職業分類：
           <% Position.all.each do |p| %>
           <%= link_to p.name, admin_topics_path(:position =>p) %>/
           <% end %><br>
       </div>
-      <div class="col-md-10">
+      <div class="col-md-12">
 
             產業分類：
           <% Industry.all.each do |i| %>
@@ -21,21 +25,28 @@
 <%= form_tag draft_upload_admin_drafts_path do %>
 
 
-          <div class="col-md-10">
+          <div class="col-md-12">
                   <table class="table draft">
                     <tr>
-                      <th>狀態：</th>
                       <th>
-                        <span class="btn btn-primary" href="#"><i class="fa fa-user "></i> User</span>
-                      </th>
-                      <th>職位：</th>
-                      <th>年資：</th>
-                      <th>產業：</th>
+                        <h4><div class="label label-success">狀態：</div></h4></th>
+
                       <th>
-                        標題：
+                        <h4><div class="label label-success"><i class="fa fa-user "></i> User</div></h4>
                       </th>
-                      <th>內文：</th>
-                      <th>發表時間：</th>
+                      <th>
+                        <h4><span class="label label-success">職位：</span></h4>  </th>
+                      <th>
+                        <h4><span class="label label-success">年資：</span></h4>
+                      </th>
+                      <th><h4><span class="label label-success">產業：</span></h4></th>
+                      <th>
+                        <h4><span class="label label-success">標題：</span></h4>
+                      </th>
+                      <th><h4><span class="label label-success">文章：</span></h4></th>
+                      <th>
+                        <h4><div class="label label-success"><i class="fa fa-clock-o fa-lg"></i>發表時間</div></h4>
+                      </th>
                       <th></th>
                       <th></th>
                     </tr>
@@ -104,7 +115,7 @@
 
     </div>  <!--content -->
   </div>
-</div>
+</div>  <!-- modal -->
 
                       </td>
 
@@ -122,29 +133,40 @@
 
 
 
-    <%= submit_tag "核選刪除", :class => "btn btn-danger" %>
     <%= submit_tag "核選發佈", :class => "btn btn-primary"%>
+    <%= submit_tag "核選刪除", :class => "btn btn-danger" %>
+
     <% end %>
 
 
+          <div class="row">
+            <div class="col-md-12">
+              <%= paginate @drafts %>
+            </div>
+          </div>
 
-            <%= paginate @drafts %>
 
-
-
+</div>
+</div>
 
         <div class="topic-list">
-          <div class="col-md-10">
+          <div class="row"></div>
+            <div class="col-md-12">
 
-              <div class="title"><h3>已發表文章列表</h3></div>
+              <div class="topics-header">
+                <h2><span class="label label-default">已發表列表</span></h2>
+              </div>
 
+            </div>
+
+          <div class="col-md-12">
               職業分類：
             <% Position.all.each do |p| %>
             <%= link_to p.name, admin_topics_path(:position_topics =>p) %>/
             <% end %><br>
-            </div>
+          </div>
 
-          <div class="col-md-10">
+          <div class="col-md-12">
               產業分類：
             <% Industry.all.each do |i| %>
             <%= link_to i.name, admin_topics_path(:industry_topics =>i) %>/
@@ -154,46 +176,59 @@
 
 
 
-            <div class="col-md-10">
+            <div class="col-md-12">
 
                   <table class="table">
                     <tr>
+                      <th>
+                        <h4><div class="label label-success"><i class="fa fa-user "></i> User</div></h4>
+                      </th>
 
-                      <th>職業：</th>
-                      <th>產業：</th>
-                      <th>年資：</th>
-                      <th>標題：</th>
-                      <th>作者：</th>
-                      <th>內文：</th>
-                      <th>發表時間：</th>
+                     <th>
+                        <h4><span class="label label-success">職位：</span></h4></th>
+
+                      <th>
+                        <h4><span class="label label-success">年資：</span></h4>
+                      </th>
+                      <th><h4><span class="label label-success">產業：</span></h4></th>
+                      <th>
+                        <h4><span class="label label-success">標題：</span></h4>
+                      </th>
+                      <th><h4><span class="label label-success">文章：</span></h4></th>
+                      <th>
+                        <h4><div class="label label-success"><i class="fa fa-clock-o fa-lg"></i>發表時間</div></h4>
+                      </th>
+                      <th></th>
+
                     </tr>
 
                   <% @topics.each do |t| %>
 
                     <tr class="info-hover">
 
-
-                      <td><%= t.position.try(:name) %></td>
-
-                      <td><%= t.industry.name %> </td>
-
-                      <td><%= t.working_time %></td>
-
-                      <td><%= t.name %></td>
-
                       <td>
                           <%= link_to t.user.name, user_path(t.user) %></td>
 
-                      <td>
-                          <%= link_to "進入", admin_topic_path(t),:class => "btn btn-primary" %></td>
+                      <td><%= t.position.try(:name) %></td>
+
+                      <td><%= t.working_time %></td>
+
+                      <td><%= t.industry.name %> </td>
+
+                      <td><%= t.name %></td>
+
+
+                      <td><%= link_to "進入", admin_topic_path(t),:class => "btn btn-primary" %></td>
 
                       <td><%= t.created_at.to_s(:short) %></td>
 
                       <td>
-                          <%= link_to "Edit", edit_admin_topic_path(t), :class => "btn btn-primary" %>
+
+                          <%= link_to "Edit", edit_admin_topic_path(t), :class => "btn btn-primary fa fa-pencil fa-pull-left" %>
 
                           <%= link_to "Delete", admin_topic_path(t, :page => params[:page]),
-                           :method => :delete, :data => { :confirm => "Are you sure ?" }, :class => "btn btn-danger" %>
+                           :method => :delete, :data => { :confirm => "Are you sure ?" },:class=>"btn btn-danger fa fa-trash-o fa-pull-right" %>
+
                       </td>
                     </tr>
                     <% end %>
@@ -201,16 +236,14 @@
 
             </div>
          </div>
-        </div>
-                    <div class="col-md-10">
+
+                    <div class="col-md-12">
                         <%= paginate @topics %>
                     </div>
 
   </div>
 </div>
 
-<div class="col-md-10">
+
 
 <%= link_to "草稿管理", admin_drafts_path %>
-</div>
-</div>
