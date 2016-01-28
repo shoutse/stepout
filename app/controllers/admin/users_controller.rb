@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
       before_action :authenticate_user!
       before_action :check_admin
       before_action :set_user, :only => [:show, :edit, :update, :destroy]
-
+layout "admin"
      def index
         @users = User.all
      end
@@ -17,6 +17,7 @@ class Admin::UsersController < ApplicationController
      end
 
      def update
+      # [CR] ????
         if @user.save
           flash[:alert] = "修改成功"
           redirect_to admin_users

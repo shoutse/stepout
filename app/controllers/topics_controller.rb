@@ -1,9 +1,14 @@
 class TopicsController < ApplicationController
 
+<<<<<<< HEAD
   before_action :load_position_and_industry
+=======
+  before_action :load_position_and_industry, only: :index
+>>>>>>> frankJ
 
 	def index
 
+    # [CR]
 		@industries=Industry.all
 		if params[:p]
 			@position=Position.find(params[:p])
@@ -28,7 +33,7 @@ class TopicsController < ApplicationController
 
       @topics = @topics.order(sort_by)
     end
-
+    # @topics = Topic.search(params)
 
 
 	end
@@ -74,9 +79,12 @@ class TopicsController < ApplicationController
 
 # @topics =Topic.page(params[:page]).per(5)
 
+  # [CR]
+  private
   def load_position_and_industry
     @position = Position.find(params[:p]) if params[:p]
     @industry = Industry.find(params[:i]) if params[:i]
+    @industries=Industry.all
   end
 end
 

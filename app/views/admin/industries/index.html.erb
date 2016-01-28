@@ -1,33 +1,32 @@
+<div class="container-fluid">
+  <div class="center">
+    <h2>產業清單</h2>
 
+  </div>
+  <div class="row">
+  <% @industries.each do |i| %>
+    <div class="col-sm-3">
+      <div class="panel panel-default center">
 
+        <div class="panel-heading">
+          <h1><%= i.name %></h1>
+        </div>
+        <div class="panel-body">
+          <div class="industry_image_tag">
+            <%= image_tag i.photo.url(:medium) %>
+          </div>
+        </div>
+        <div class="panel-footer">
+            <%= link_to "編輯", edit_admin_industry_path(i),:class => "btn btn-primary" %>
+            <%= link_to "刪除", admin_industry_path(i), :method => :delete,  :data => { :confirm => "刪了就回不去囉！" }, :class => "btn btn-danger" %>
+        </div>
 
-<hr>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
 
-
-
-
-
-
-<% @industries.each do |i| %>
-<table>
-    <tr>
-        <td><%= i.name %></td>
-
-
-
-
-
-        <td><%= link_to "編輯", edit_admin_industry_path(i),:class => "btn btn-primary" %></td>
-
-
-        <td>
-            <%= link_to "刪除", admin_industry_path(i), :method => :delete,  :data => { :confirm => "Are You Sure?" }, :class => "btn btn-danger" %></td>
-
-    </tr>
-
-            <% end %>
-
-</table>
 
 <%= link_to '新增產業', new_admin_industry_path %><br>
 <%= link_to '返回文章首頁', admin_topics_path %><br>

@@ -1,13 +1,10 @@
-<% # can use: form_for [:admin, @draft] do |f| %>
-<%= form_for @draft, :url => admin_draft_path(@draft),:method =>:patch do |f| %>
+<!-- [CR] <%# # can use: form_for [:admin, @draft] do |f| %> -->
+<%#= form_for @draft, :url => admin_draft_path(@draft),:method =>:patch do |f| %>
 
 
 <div class="container">
       <div class="draft-container">
           <div class="row">
-              <div class="col-md-12 userbox">
-                  <h1><%= @draft.name %></h1>
-              </div>
 
                   <div class="col-md-3 userboxphoto">
                       <%= image_tag @draft.user.photo.url(:medium), :class=>"img-circle" %>
@@ -41,21 +38,25 @@
      </div>
   </div>
 
-
 <hr>
 <div class="draft-content-container">
     <div class="content-row">
+          <div class="col-md-12 draft-header">
+                  <h2>標題：<%= @draft.name %></h2>
+              </div>
           <div class="col-md-12 contentbox">
           <%# use sanitize %>
-             <%= simple_format(@draft.content)%>
+             <span><h2>內容:</h2><%= simple_format(@draft.content)%></span>
           </div>
+    </div>
+ </div>
 
+<hr>
 
 <!-- <div class="form-group">
    <%#= f.submit :class=> "btn btn-primary" %>
  </div> -->
-<% end %>
-
+<%# end %>
 
 
 
@@ -88,7 +89,7 @@
 
 <hr>
  <%= "發表內容： "%>
- <table>
+ <!-- <table> -->
     <%#= simple_format(@draft.content)%>
 
 

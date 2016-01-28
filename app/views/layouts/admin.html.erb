@@ -6,31 +6,26 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
-
-
-
 </head>
 <body>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <% if flash[:notice].present? %>
-        <div class="alert alert-success" role="alert"><%= flash[:notice] %>
-        </div>
-        <% end %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <% if flash[:notice].present? %>
+          <div class="alert alert-success" role="alert"><%= flash[:notice] %>
+          </div>
+          <% end %>
 
-      <% if flash[:alert].present? %>
-        <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
-      <% end %>
-  </div>
-  </div>
-  </div>
+        <% if flash[:alert].present? %>
+          <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
+        <% end %>
+        </div>
+      </div>
+    </div>
 
 
 
     <div class="navbar-wrapper">
-
-
         <nav class="navbar navbar-inverse navbar-static-top">
           <div class="container">
             <div class="navbar-header">
@@ -43,27 +38,32 @@
 
               <a class="navbar-brand-admin" href="http://localhost:3000/admin/topics">
                 <span class="stepout-logo">
-                  <%=image_tag("Stepout Logo.png") %>管理
+                  <%=image_tag("Stepout Logo.png") %>文章管理
                 </span>
               </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">職業類別 <span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">職業清單 <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                     <%Position.all.each do |p|%>
-                     <li><%=link_to p.name,admin_topics_path(:p=>p.id)%></li>
-                     <%end%>
+
+                     <% Position.all.each do |p|%>
+                     <li>
+                       <%=link_to p.name, admin_positions_path%>
+                     </li>
+                     <% end %>
                   </ul>
                 </li>
 
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">產業類別 <span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">產業清單 <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                      <% Industry.all.each do |i|%>
-                     <li><%=link_to i.name,admin_topics_path(:i=>i.id)%></li>
-                     <%end%>
+                     <li>
+                      <%=link_to i.name,admin_industries_path %>
+                     </li>
+                     <% end %>
                   </ul>
                 </li>
 
@@ -72,57 +72,55 @@
                 </li>
 
                 <li>
-                <%if current_user && current_user.admin?%>
+                <% if current_user && current_user.admin?%>
                 <%=link_to "新增草稿",new_admin_draft_path%>
-                <%else%>
+                <% else %>
                 <%=link_to "新增草稿",new_session_path(:user)%>
-                <%end%>
+                <% end %>
                 </li>
               </ul>
 
 
-              <div class="right">
+            <div class="right">
               <ul class="nav navbar-nav">
-
-
-
 
                 <% if current_user %>
                   <li><%=current_user.name||current_user.email%></li>
-                  <li><%=link_to "會員中心",user_path(current_user)%></li>
-                  <li><%= link_to('登出', destroy_user_session_path, :method => :delete) %></li>
+                  <li>
+                    <div class="user-img">
+                      <%=link_to user_path(current_user) do %>
+                      <%= image_tag current_user.photo(:sm), :class => 'img-circle' %>
+                      <% end %>
+                    </div>
+                  </li>
+                  <li><%= link_to('登出', destroy_user_session_path, :method => :delete, :class => "fa fa-sign-out fa-lg") %></li>
                   <li><%= link_to('修改密碼', edit_registration_path(:user)) %></li>
                 <% else %>
                   <li><%=link_to "會員中心",new_session_path(:user)%></li>
                   <li><%= link_to('註冊', new_registration_path(:user)) %></li>
-                  <li><%= link_to('登入', new_session_path(:user)) %></li>
+                  <li><%= link_to('登入', new_session_path(:user), :class => "fa fa-sign-in fa-lg") %></li>
                   <li> <%= link_to image_tag("facebook_icon_30x30.gif"), user_omniauth_authorize_path(:facebook) %></li>
 
                 <% end %>
 
 
-              </ul>
+                </ul>
               </div>
             </div>
 
           </div>
         </nav>
-
       </div>
-    </div>
-<!-- <div class="row"> -->
-<div class="col-md-2 admin-sidebarlist">
+
+
+<!-- <div class="col-md-2 admin-sidebarlist">
       <div class="list-group">
-        <%= link_to "新增產業", new_admin_industry_path, :class => "list-group-item" %>
-        <%= link_to "新增職位", new_admin_position_path, :class => "list-group-item" %>
-        <%= link_to "編輯產業", admin_industries_path, :class => " list-group-item" %>
-        <%= link_to "編輯職位", admin_positions_path, :class => " list-group-item" %>
-        <%@industries.each do |i|%>
-        <%=link_to i.name,admin_topics_path(:i=>i.id,:p=>params[:p]),:class=>"list-group-item"%>
-
-        <% end %>
+        <%#= link_to "新增產業", new_admin_industry_path, :class => "list-group-item" %>
+        <%#= link_to "新增職位", new_admin_position_path, :class => "list-group-item" %>
+        <%#= link_to "編輯產業", admin_industries_path, :class => " list-group-item" %>
+        <%#= link_to "編輯職位", admin_positions_path, :class => " list-group-item" %>
       </div>
-  </div>
+  </div> -->
   <!-- </div> -->
 
       <div class="container">
@@ -133,12 +131,14 @@
        <!-- </div> -->
       </div>
   <hr>
-  <div class="footer">
+  <div class="admin-footer">
      <div class="bg-black">
        <div class="container">
          <div class="row">
             <div class="col-md-2">
-              <h1 class="fa fa-gg-circle fa-2x">Stepout</h1>
+              <span class="stepout-logo-bottom">
+                  <%=image_tag("Stepout Logo.png") %>
+              </span>
             </div>
             <div class="col-md-5">
               <div class="widget-footer">
@@ -164,7 +164,7 @@
                           <span class="input-group-addon">
                             <i class="fa fa-envelope-o fa-fw"></i>
                           </span>
-                            <input class="form-control" type="text" placeholder="Email address">
+                            <input class="form-control" type="email" placeholder="Email address">
 
                        </div>
                       </p>
@@ -177,8 +177,6 @@
        </div>
      </div>
   </div>
-
-
 </body>
 </html>
 

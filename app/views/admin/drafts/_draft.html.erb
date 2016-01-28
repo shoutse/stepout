@@ -2,16 +2,14 @@
 <div class="container">
 
   <h1>我要投稿</h1>
-  <%#= form_for @draft,:url=>drafts_path do |f|%>
+
     <div class="form-group">
       <%=f.label :name,"標題:"%>
       <%=f.text_field :name, :required => true, :class=>"form-control"%>
     </div>
      <div class="form-group">
       <%=f.label :position_id,"職業類別"%>
-
-      <%#= extract to helper, like: f.select :position_id, position_options %>
-      <%=f.select :position_id, Position.all.map{ |x| [x.name, x.id] },:class=>"form_control",:required => true,:include_blank=>"請選擇"%>
+      <%=f.select :position_id,Position.all.map{|x|[x.name,x.id]},:class=>"form_control",:required => true,:include_blank=>"請選擇"%>
     </div>
      <div class="form-group">
       <%=f.label :industry_id,"產業類別"%>
@@ -37,7 +35,7 @@
     </div>
     <%= f.submit "送出投稿",:class=>"btn btn-primary"%>
     <%= link_to "取消", :back, :class => "btn btn-danger" %>
-  <%# end %>
+
 <hr>
 </div>
 

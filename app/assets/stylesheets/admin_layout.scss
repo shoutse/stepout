@@ -1,8 +1,90 @@
+
+
+//  admin/layout -------------
 .stepout-logo img{
   width: 100px;
   height: 50px;
 }
 
+.stepout-logo-bottom img{
+  width: 180px;
+  height: 100px;
+  margin-top: 20px;
+}
+
+//  admin/topics/index--------------
+  .user-img{
+    position: relative;
+  }
+
+  .user-img img{
+    width:50px;
+    height: 50px;
+    display: inline-block;
+    position: relative;
+    left: 10px;
+  }
+
+  .drafts-header h2{
+    text-align: center;
+  }
+
+  .topics-header h2{
+    text-align: center;
+  }
+
+  .table.draft {
+    border-bottom: 1px solid ;
+
+  }
+  .table.draft th{
+    border-color: red;
+    border-bottom {
+      color: red;
+    }
+  }
+
+
+
+// admin/layout/footer-----------------
+  .admin-footer{
+    background-color: black;
+  }
+  .admin-footer .row{
+    width: 1280px;
+  }
+
+  .admin-footer .stepout-logo-bottom{
+    padding-left: 10px;
+
+  }
+  .admin-footer .container{
+    margin-left: 0;
+    margin-right:0;
+  }
+
+// admin/positions/index--------------------------------
+  .position_image_tag img{
+    width: 253px;
+  }
+  .panel-heading {
+    height: 80px;
+    margin-top: 0;
+  }
+
+  .panel-heading h1{
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+// admin/industries/index-----------
+.industry_image_tag img{
+  width:253px;
+}
+
+
+// ---------------------------------
 .navbar-brand-admin {
   padding: 0px;
   margin-top: 0px;
@@ -18,3 +100,91 @@
  .admin-sidebarlist {
   padding-left: 0;
  }
+
+ .admin-topic.container {
+  margin-left: 100px;
+ }
+
+
+ // admin-industries.index==================================
+.industry-panel {
+    border: 1px solid #f4511e;
+    border-radius:0;
+    transition: box-shadow 0.5s;
+}
+
+.industry-panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
+
+.panel-footer .btn:hover {
+    border: 1px solid #E7783C;
+    background-color: #fff !important;
+    color: #f4511e;
+}
+
+.panel-heading {
+    color: #fff !important;
+    background-color: #E7783C !important;
+    padding: 25px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.panel-footer {
+    background-color: #fff !important;
+}
+
+.panel-footer .btn {
+    margin: 15px 0;
+    background-color: #E7783C;
+    color: #fff;
+}
+
+
+// admin-positions/index==================================
+.panel {
+    border: 1px solid #E7783C;
+    border-radius:0;
+    transition: box-shadow 0.5s;
+}
+
+.panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
+
+.panel-body {
+  padding:0;
+}
+
+.panel-footer .btn:hover {
+    border: 1px solid #E7783C;
+    background-color: #fff !important;
+    color: #E7783C;
+}
+
+.panel-heading {
+    color: #fff !important;
+    background-color: #E7783C !important;
+    padding: 25px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.panel-footer {
+    background-color: #fff !important;
+}
+
+
+.panel-footer .btn {
+    text-align: center;
+    margin: 15px 0;
+    background-color: #E7783C;
+    color: #fff;
+}

@@ -1,8 +1,12 @@
 class Admin::DraftsController < ApplicationController
+
+  # [CR] consider to extract the AdminController
+  # put same behaviors to it (like: check_admin, assign layout)
+
   before_action :authenticate_user!
   before_action :check_admin
   before_action :set_draft, :only=>[:show, :edit, :update, :destroy]
-
+layout "admin"
      def index
       @drafts = Draft.all
      end
@@ -18,33 +22,36 @@ class Admin::DraftsController < ApplicationController
     end
 
     def create
-     @draft = current_user.drafts.new(draft_params)
-     if current_user.role == "admin"
-       @draft.status= "小編"
-     end
-     if @draft.save
+      @draft = current_user.drafts.new(draft_params)
 
-      redirect_to admin_topics_path
-    else
-      render :new
+      if current_user.role == "admin"
+        @draft.status= "小編"
+      end
+
+      if @draft.save
+        redirect_to admin_topics_path
+      else
+        render :new
+      end
     end
-             #raise
-           end
 
            def draft_upload
             ids = Array( params[:ids] )
             # drafts = ids.map{ |i| Draft.find_by_id(i) }.compact
             drafts = Draft.where(id: ids)
 
-            if params[:commit] == "Delete"
+            if params[:commit] == "核選刪除"
 
              drafts.each { |d| d.destroy }
              flash[:alert] = "刪除成功"
             redirect_to admin_topics_path
 
-            elsif params[:commit] == "Publish"
-
+            elsif params[:commit] == "核選發佈"
               drafts.each do |d|
+
+                # @topic = Topic.copy_from_draft(draft)
+                # @topic.save
+
                  @topic = Topic.new
                  @topic.name = d.name
                  @topic.position_id = d.position_id
@@ -54,15 +61,14 @@ class Admin::DraftsController < ApplicationController
                  @topic.user_id = d.user_id
                  @topic.working_time = d.working_time
                  @topic.save
-               d.status = "已上傳"
+               d.status = "已發佈"
                d.save
 
                flash[:notice] = "上傳成功"
-
               end
 
               redirect_to admin_topics_path
-           end
+            end
          end
 
 

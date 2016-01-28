@@ -1,7 +1,7 @@
 <hr>
 <%#= form_tag topic_update_admin_drafts_path do %>
 
-<table class="table">
+<table class="draftstable">
   <tr>
     <th>狀態：</th>
     <th>標題：</th>
@@ -38,6 +38,10 @@
 
     <td>
       <%= link_to "Show", admin_draft_path(d),:class => "btn btn-primary" %>
+    </td>
+    <td>
+      <%= link_to "edit", edit_admin_draft_path(d) %>
+
     </td>
     <td>
         <%= link_to "Delete", admin_draft_path(d, :page => params[:page]),

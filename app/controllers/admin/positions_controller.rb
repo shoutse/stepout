@@ -2,7 +2,7 @@ class Admin::PositionsController < ApplicationController
         before_action :authenticate_user!
         before_action :check_admin
         before_action :set_position, :only => [:show, :edit, :update, :destroy]
-
+layout "admin"
      def index
         @positions = Position.all
      end
@@ -37,7 +37,7 @@ class Admin::PositionsController < ApplicationController
      def update
         if @position.update(position_params)
          flash[:alert] ="更新成功"
-         redirect_to admin_topics_path
+         redirect_to admin_positions_path
         else
             render :action => :edit
 
@@ -67,7 +67,7 @@ class Admin::PositionsController < ApplicationController
 
 
     def position_params
-       params.require(:position).permit(:name)
+       params.require(:position).permit(:name, :photo)
      end
 
 end
