@@ -11,21 +11,21 @@
 	    </div>
 	    <div class="col-md-9 col-xs-9 topicboxmain">
 					<div class="row">
-						<span class="col-md-8">
+						<span class="col-md-8 topicname">
 							 <h2><%=link_to t.name,topic_path(t)%></h2>
 						</span>
 						<span class="col-md-4" id="topictime">
 						   <%=t.created_at.to_s(:short)%>
 						</span>
 						<span class="col-md-8" id="topicintro">
-						   <%=t.user.name%>
-						   <%=t.user.occupation%>
-						   <%=t.industry.name%>
-						   年資:<%=t.working_time%>年
+						   <span><%=t.user.name%></span>
+						   <span><%=t.user.occupation%></span>
+						   <span><%=t.industry.name%></span>
+						   <span>年資:<%=t.working_time%>年</span>
 						</span>
 	        </div>
 					<div class="row">
-						<span class="col-md-8">
+						<span class="col-md-8 topicdes">
 							<p><%=link_to t.description,topic_path(t)%></p>
 						</span>
 						<span class="col-md-4" id="fblike">
