@@ -28,9 +28,12 @@
                       </span>
 
                       <span class="col-md-12">
-                        <p>
-                          <%= @draft.created_at.to_s(:short) %>
-                        </p>
+                        <div class="row">
+                          <span class="col-md-12">
+                            <%= @draft.user.introduction %>
+                          </span>
+
+                        </div>
                       </span>
                   </div>
                </div>
@@ -41,9 +44,12 @@
 <hr>
 <div class="draft-content-container">
     <div class="content-row">
-          <div class="col-md-12 draft-header">
+          <div class="col-md-10 draft-header">
                   <h2>標題：<%= @draft.name %></h2>
-              </div>
+          </div>
+          <div class="col-md-2 draft-header">
+                <p> 發表：<%= @draft.created_at.to_s(:short) %></p>
+          </div>
           <div class="col-md-12 contentbox">
           <%# use sanitize %>
              <span><h2>內容:</h2><%= simple_format(@draft.content)%></span>
@@ -92,5 +98,8 @@
  <!-- <table> -->
     <%#= simple_format(@draft.content)%>
 
-
-<%= link_to "返回管理首頁", admin_topics_path, :class => "btn btn-primary" %>
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to "返回管理首頁", admin_topics_path, :class => "btn btn-primary" %>
+  </div>
+</div>
