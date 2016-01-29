@@ -18,18 +18,19 @@ class ApplicationController < ActionController::Base
 
     [:name, :birthday, :major, :occupation, :school, :former_occupation, :role, :photo, :introduction].each do |col|
       devise_parameter_sanitizer.for(:sign_up) << col
+      devise_parameter_sanitizer.for(:account_update) << col
     end
 
     # TODO
-    devise_parameter_sanitizer.for(:account_update) <<:photo
-		devise_parameter_sanitizer.for(:account_update) <<:name
-		devise_parameter_sanitizer.for(:account_update)<<:birthday
-		devise_parameter_sanitizer.for(:account_update)<<:major
-		devise_parameter_sanitizer.for(:account_update)<<:occupation
-		devise_parameter_sanitizer.for(:account_update)<<:school
-		devise_parameter_sanitizer.for(:account_update)<<:former_occupation
-		devise_parameter_sanitizer.for(:account_update)<<:role
-    devise_parameter_sanitizer.for(:account_update)<<:introduction
+  #   devise_parameter_sanitizer.for(:account_update) <<:photo
+		# devise_parameter_sanitizer.for(:account_update) <<:name
+		# devise_parameter_sanitizer.for(:account_update)<<:birthday
+		# devise_parameter_sanitizer.for(:account_update)<<:major
+		# devise_parameter_sanitizer.for(:account_update)<<:occupation
+		# devise_parameter_sanitizer.for(:account_update)<<:school
+		# devise_parameter_sanitizer.for(:account_update)<<:former_occupation
+		# devise_parameter_sanitizer.for(:account_update)<<:role
+  #   devise_parameter_sanitizer.for(:account_update)<<:introduction
 	end
 
   def set_topic
