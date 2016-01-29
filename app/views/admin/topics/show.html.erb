@@ -1,76 +1,95 @@
 <div class="container">
 
-    <div class="row">
-      <h1 class="col-md-12"><%= @topic.name %></h1>
+
+    <div class="row topicpeoplebox">
+      <div class="col-md-2 topicimage"><%=link_to image_tag(@topic.user.photo.url(:medium), :class=>"img-circle"),user_path(@topic.user)%></div>
+        <div class="col-md-10">
+          <div class="row">
+              <div class="col-md-10 topicusername">
+                <div class="row">
+                  <div class="col-md-12 topicx">
+                  <spna class="topicpeoplename"><b><%=@topic.user.name%></b></spna><span class="topicpeople"><b><%=@topic.user.occupation%></b></span><span class="topicpeople"><b><%=@topic.industry.name%></b></span><span class="topicpeople"><b>年資: <%=@topic.working_time%> 年</b></span>
+                  </div>
+                  <div class="col-md-9 topicintro">
+                    <p>
+                      <%if @topic.user.introduction%>
+                      <%=@topic.user.introduction%>
+                      <%end%>
+                  </p>
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-md-2">
+                <div class="row">
+                  <div class="col-md-12">
+                    <%=@topic.created_at.to_s(:short)%>
+                  </div>
+                  <div class="col-md-12 subbtn">
+                      <%=image_tag("heart.jpg")%>
+                      <% if @topic.find_my_subscription(current_user) %>
+                      <%= link_to "取消", unsubscribe_topic_path(@topic), :method => :post, :class => "btn btn-danger btn-xs" %>
+                      <% else %>
+                      <%= link_to "收藏", subscribe_topic_path(@topic), :method => :post, :class => "btn btn-default btn-xs" %>
+                      <% end %>
+                  </div>
+                  <div class="col-md-12">
+                    <%=social_share_button_tag(@topic.name,:url=>topic_url(@topic))%>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+        </div>
     </div>
-    <div class="row">
-      <div class="col-md-4 topicimage"><%=image_tag("gine.jpg")%></div>
-      <div class="col-md-4 topicusername"><h6><%=@topic.user.name%></h6>
-      <h6><%=@topic.user.occupation%></h6><h6><%=@topic.industry.name%></h6><h6>年資: <%=@topic.working_time%> 年</h6></div>
-      <div class="col-md-4">  <% like = @topic.find_my_like(current_user) %>
-        <% if like %>
-        <%= link_to "Unlike", topic_like_path(@topic, like), :method => :delete, :class => "btn btn-danger" %>
-        <% else %>
-        <%= link_to "Like", topic_likes_path(@topic), :method => :post, :class => "btn btn-default" %>
-        <% end %>
 
-        <% if @topic.find_my_subscription(current_user) %>
-        <%= link_to "UnSubscribe", unsubscribe_topic_path(@topic), :method => :post, :class => "btn btn-danger" %>
-        <% else %>
-        <%= link_to "Subscribe", subscribe_topic_path(@topic), :method => :post, :class => "btn btn-default" %>
-        <% end %>
-       </div>
+    <div class="topic-content-container">
+    <div class="content-row">
+          <div class="col-md-10 topic-header">
+                  <h2>標題：<%= @topic.name %></h2>
+          </div>
+          <div class="col-md-2 topic-header">
+                <p> 發表：<%= @topic.created_at.to_s(:short) %></p>
+          </div>
+          <div class="col-md-12 contentbox">
+          <%# use sanitize %>
+             <span><h2>內容:</h2><%= simple_format(@topic.content)%></span>
+          </div>
     </div>
-
-    <div class="row">
-      <div class="col-md-12 topiccontent">
-        <p>
-          <%= @topic.content.html_safe %>
-        </p>
-      </div>
-    </div>
-
-    <div class="row">
-      <table class="col-md-12 table">
-    <tr>
-      <td>
-        內容
-      </td>
-      <td>
-        留言者
-      </td>
-      <td>
-        回覆時間
-      </td>
-    </tr>
-
+ </div>
     <% @comments.each do |c|%>
-    <tr>
-
-      <td class="commentcontent">
-        <%=c.content%>
-      </td>
-      <td>
-        <%=c.user.name||c.user.try(:email)%>
-      </td>
-      <td>
-        <%=c.created_at.to_s(:short)%>
-      </td>
-
-    </tr>
-    <% end %>
-    </table>
-    </div>
     <div class="row">
-      <div class="col-md-12 topiccomment">
+        <div class="col-md-2 text-center">
+          <div class="comment-user">
+             <%= link_to user_path(c.user) do %>
+             <span><%= image_tag c.user.photo(:sm), :class => 'img-circle'%>
+             </span>
+             <% end %>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <h4><%=c.user.name||c.user.try(:email) %> :     <small>at <%= c.created_at.to_s(:short)%></small></h4>
+          <p><%= c.content %></p>
+          <br>
+        </div>
+    </div>
+    <% end %>
 
-        <%= form_for @comment,:url => topic_comments_path(@topic) do |f|%>
+
+
+    <div class="row">
+    <div class="col-md-12 topiccomment">
+
+        <%= form_for @comment,:url=>topic_comments_path(@topic) do |f|%>
         <div class="form-group">
         <%= f.label :content,"我要留言:"%>
         <%= f.text_area :content,:class=>"form-control"%>
         </div>
         <%= f.submit "留言",:class=>"btn btn-primary"%>
         <%end%>
-      </div>
+    </div>
+
     </div>
 </div>

@@ -44,8 +44,20 @@
     }
   }
 
+  .table.topics {
+    border-bottom: 1px solid ;
+  }
 
-
+  .table.topics th{
+    border-color: red;
+    border-bottom {
+      color: red;
+    }
+  }
+// admin/topics/show-----------
+  .topicimage img.img-circle{
+    width: 170px;
+  }
 // admin/layout/footer-----------------
   .admin-footer{
     background-color: black;
