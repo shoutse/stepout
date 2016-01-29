@@ -36,11 +36,11 @@
                 <span class="icon-bar"></span>
               </button>
 
-              <a class="navbar-brand-admin" href="http://www.stepout.space/admin/topics">
+              <%= link_to admin_topics_path, :class => "navbar-brand-admin" do %>
                 <span class="stepout-logo">
                   <%=image_tag("Stepout Logo.png") %>文章管理
                 </span>
-              </a>
+              <% end %>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
@@ -61,21 +61,21 @@
                   <ul class="dropdown-menu">
                      <% Industry.all.each do |i|%>
                      <li>
-                      <%=link_to i.name,admin_industries_path %>
+                      <%=link_to i.name, admin_industries_path %>
                      </li>
                      <% end %>
                   </ul>
                 </li>
 
                 <li class="frontend">
-                  <%= link_to "前台", welcome_path %>
+                  <%= link_to "前台", root_path %>
                 </li>
 
                 <li>
                 <% if current_user && current_user.admin?%>
-                <%=link_to "新增草稿",new_admin_draft_path%>
+                  <%=link_to "新增草稿",new_admin_draft_path%>
                 <% else %>
-                <%=link_to "新增草稿",new_session_path(:user)%>
+                 <%=link_to "新增草稿",new_session_path(:user)%>
                 <% end %>
                 </li>
               </ul>
@@ -124,11 +124,7 @@
   <!-- </div> -->
 
       <div class="container">
-       <!-- <div class="row"> -->
-        <!-- <div class="col-md-12"> -->
           <%= yield %>
-        <!-- </div> -->
-       <!-- </div> -->
       </div>
   <hr>
   <div class="admin-footer">

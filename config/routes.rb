@@ -3,42 +3,25 @@ Rails.application.routes.draw do
 
   devise_for :users,:controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  get "/welcome" => "topics#welcome"
 
   namespace :admin do
+    resources :topics, :except => [:new,:create]
 
-      resources :topics, :except => [:new,:create]
-
-      resources :users
-      resources :positions
-      resources :industries
-      resources :drafts do
-          collection do
-            post :draft_upload
-          end
+    resources :users
+    resources :positions
+    resources :industries
+    resources :drafts do
+      collection do
+        post :draft_upload
       end
+    end
   end
 
-
-  # namespace :admin do
-    # resources :positions do
-        # resources :industries do
-             # resources :topics
-                              # end
-                         # end
-    # resources :drafts
-    # resources :users
-                    #end
-
-
-
   resources :users
-
   resources :drafts
 
-
   resources :topics do
-    resources :comments,:controller=>"topic_comments"
+    resources :comments,:controller => "topic_comments"
     resources :likes
 
     member do

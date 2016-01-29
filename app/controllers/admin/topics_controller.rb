@@ -1,60 +1,48 @@
 class Admin::TopicsController < ApplicationController
-   before_action :authenticate_user!
-   before_action :check_admin
-   before_action :set_topic, :only =>[:show, :update, :edit, :destroy]
+  before_action :authenticate_user!
+  before_action :check_admin
+  before_action :set_topic, :only =>[:show, :update, :edit, :destroy]
 
   layout "admin"
 
-     def show
+  def show
+    @comments = @topic.comments
+    @comment = Comment.new
+  end
 
-       @comments = @topic.comments
-       @comment = Comment.new
+  def index
 
+    @user = User.all
+    @industries = Industry.all
+    @position = Position.all
 
-     end
-
-     def index
-
-      @user = User.all
-
-
-       @industries = Industry.all
-
-       @position = Position.all
+    if params[:position]
+      @position = Position.find(params[:position])
+      @drafts = @position.drafts
 
 
+    elsif params[:industry]
+      @industry = Industry.find(params[:industry])
+      @drafts = @industry.drafts
+    else
+      @drafts = Draft.all
+    end
 
-             if params[:position]
-                @position = Position.find(params[:position])
-                @drafts = @position.drafts
+    if params[:position_topics]
+      @position = Position.find(params[:position_topics])
+      @topics = @position.topics
+    elsif params[:industry_topics]
+      @industry = Industry.find(params[:industry_topics])
+      @topics = @industry.topics
+    else
+      @topics = Topic.all
+    end
 
-
-             elsif params[:industry]
-                @industry = Industry.find(params[:industry])
-                @drafts = @industry.drafts
-
-             else
-                @drafts = Draft.all
-
-             end
-
-               if params[:position_topics]
-                @position = Position.find(params[:position_topics])
-                @topics = @position.topics
-
-             elsif params[:industry_topics]
-                @industry = Industry.find(params[:industry_topics])
-                @topics = @industry.topics
-
-             else
-                @topics = Topic.all
-
-             end
-          @drafts = @drafts.page(params[:page]).per(5)
-          @topics = @topics.page(params[:page]).per(5)
-      # [CR] reuse the class method of Topic.search
-      # @topics = Topic.search(params)
-     end
+    @drafts = @drafts.page(params[:page]).per(5)
+    @topics = @topics.page(params[:page]).per(5)
+    # [CR] reuse the class method of Topic.search
+    # @topics = Topic.search(params)
+  end
 
      # def new
      #    @topic = Topic.new
@@ -93,12 +81,6 @@ class Admin::TopicsController < ApplicationController
 
     protected
 
-    def check_admin
-      unless current_user.admin?
-        raise AvtiveRecord::RecordNotFound
-      end
-    end
-
     def set_topic
       @topic = Topic.find(params[:id])
     end
@@ -113,7 +95,5 @@ class Admin::TopicsController < ApplicationController
      # end
   # end
 
-# @topics =@topic.page(params[:page]).per(5)
-# @drafts =@drfats.page(params[:page]).per(5)
 
 end

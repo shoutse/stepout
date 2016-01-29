@@ -8,31 +8,32 @@ class ApplicationController < ActionController::Base
 
 	protected
 
-    	def configure_permitted_parameters
+  def check_admin
+    unless current_user.admin?
+      raise AvtiveRecord::RecordNotFound
+    end
+  end
 
-      		devise_parameter_sanitizer.for(:sign_up) << :name
-      		devise_parameter_sanitizer.for(:sign_up) <<:birthday
-      		devise_parameter_sanitizer.for(:sign_up) <<:major
-      		devise_parameter_sanitizer.for(:sign_up) <<:occupation
-      		devise_parameter_sanitizer.for(:sign_up) <<:school
-      		devise_parameter_sanitizer.for(:sign_up) <<:former_occupation
-      		devise_parameter_sanitizer.for(:sign_up) <<:role
-          devise_parameter_sanitizer.for(:sign_up) <<:photo
-          devise_parameter_sanitizer.for(:sign_up) <<:introduction
-          devise_parameter_sanitizer.for(:account_update) <<:photo
-      		devise_parameter_sanitizer.for(:account_update) <<:name
-      		devise_parameter_sanitizer.for(:account_update)<<:birthday
-      		devise_parameter_sanitizer.for(:account_update)<<:major
-      		devise_parameter_sanitizer.for(:account_update)<<:occupation
-      		devise_parameter_sanitizer.for(:account_update)<<:school
-      		devise_parameter_sanitizer.for(:account_update)<<:former_occupation
-      		devise_parameter_sanitizer.for(:account_update)<<:role
-          devise_parameter_sanitizer.for(:account_update)<<:introduction
-    	end
+	def configure_permitted_parameters
 
-     def set_topic
-        @topic = Topic.find( params[:topic_id] )
-     end
+    [:name, :birthday, :major, :occupation, :school, :former_occupation, :role, :photo, :introduction].each do |col|
+      devise_parameter_sanitizer.for(:sign_up) << col
+    end
 
+    # TODO
+    devise_parameter_sanitizer.for(:account_update) <<:photo
+		devise_parameter_sanitizer.for(:account_update) <<:name
+		devise_parameter_sanitizer.for(:account_update)<<:birthday
+		devise_parameter_sanitizer.for(:account_update)<<:major
+		devise_parameter_sanitizer.for(:account_update)<<:occupation
+		devise_parameter_sanitizer.for(:account_update)<<:school
+		devise_parameter_sanitizer.for(:account_update)<<:former_occupation
+		devise_parameter_sanitizer.for(:account_update)<<:role
+    devise_parameter_sanitizer.for(:account_update)<<:introduction
+	end
+
+  def set_topic
+    @topic = Topic.find( params[:topic_id] )
+  end
 
 end

@@ -2,7 +2,8 @@ class Admin::PositionsController < ApplicationController
         before_action :authenticate_user!
         before_action :check_admin
         before_action :set_position, :only => [:show, :edit, :update, :destroy]
-layout "admin"
+    layout "admin"
+    
      def index
         @positions = Position.all
      end
@@ -58,13 +59,6 @@ layout "admin"
     def set_position
       @position =Position.find(params[:id])
     end
-
-    def check_admin
-      unless current_user.admin?
-        raise AvtiveRecord::RecordNotFound
-      end
-    end
-
 
     def position_params
        params.require(:position).permit(:name, :photo)

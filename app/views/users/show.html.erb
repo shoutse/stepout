@@ -33,24 +33,21 @@
         </div>
        
 
-
-
-
-<% if @user==current_user %>
-<%@str="我的文章"%>
-<%else%>
-
-<% @str=(@user.name+"的文章")||(@user.email+"的文章")%>
-<%end%>
 <div class="usercollection">
   <div class="row">
     <span class="col-md-4">
         <h3><%=image_tag("heart.jpg")%><%=link_to "收藏文章",user_path(params[:id])%></h3>
     </span>
     <span class="col-md-4">
-       <h3><%=image_tag("writing.jpg")%><%=link_to @str,user_path(params[:id],:me=>"me")%></h3>
+       <h3><%=image_tag("writing.jpg")%>
+       <% if @user == current_user %>
+          <%=link_to "我的文章", user_path(params[:id],:me=>"me")%>
+        <% else %>
+          <%=link_to "#{@user.display_name} 的文章",user_path(params[:id],:me=>"me")%>
+        <% end %>
+       </h3>
     </span>
-    <% if @user==current_user%>
+    <% if @user==current_user %>
     <span class="col-md-4">
       <h3><%=image_tag("people.png")%><%=link_to "帳號管理",edit_registration_path(:user)%></h3>
     <% end %>

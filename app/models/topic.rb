@@ -11,6 +11,21 @@ class Topic < ActiveRecord::Base
 	has_many :subscription_users,:through=>:subscriptions,:source=>:user
   include Bootsy::Container
 
+
+  def self.copy_from_draft(draft)
+    topic = Topic.new
+    topic.name = draft.name
+    topic.position_id = draft.position_id
+    topic.industry_id = draft.industry_id
+    topic.content = draft.content
+    topic.description = draft.answer1
+    topic.user_id = draft.user_id
+    topic.working_time = draft.working_time
+
+    return topic
+  end
+
+
   def find_my_subscription(u)
      if u
        self.subscriptions.where( :user_id => u.id ).first
@@ -18,7 +33,6 @@ class Topic < ActiveRecord::Base
        nil
      end
   end
-
 
   def find_my_like(u)
      if u

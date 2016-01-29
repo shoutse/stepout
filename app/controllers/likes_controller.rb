@@ -1,16 +1,11 @@
 class LikesController < ApplicationController
 
    before_action :set_topic
-   before_action :authenticate_user!, :except => [:index, :show]
+   before_action :authenticate_user!
 
    # like
    def create
-     Like.create!( :topic => @topic, :user => current_user )
-
-     # [CR]
-     # current_user.likes.create!(topic: @topic)
-     # or
-     # @topic.likes.create(user: current_user)
+     current_user.likes.create!(topic: @topic)
 
      redirect_to :back
    end
@@ -22,7 +17,5 @@ class LikesController < ApplicationController
 
      redirect_to :back
    end
-
-   protected
 
 end

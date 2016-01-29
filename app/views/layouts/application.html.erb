@@ -5,14 +5,8 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-
-
-
-
 </head>
 <body>
-
-
 
     <div class="navbar-wrapper">
 
@@ -27,7 +21,7 @@
                 <span class="icon-bar"></span>
               </button>
 
-              <a class="navbar-brand" href="http://www.stepout.space"><h1 class="fa fa-gg-circle">Stepout</h1></a>
+              <a class="navbar-brand" href="/"><h1 class="fa fa-gg-circle">Stepout</h1></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
@@ -41,11 +35,11 @@
                 </li>
 
                 <li>
-                <%if current_user%>
-                <%=link_to "我要投稿",new_draft_path%>
-                <%else%>
-                <%=link_to "我要投稿",new_session_path(:user)%>
-                <%end%>
+                <% if current_user %>
+                 <%=link_to "我要投稿",new_draft_path%>
+                <% else %>
+                  <%=link_to "我要投稿",new_session_path(:user)%>
+                <% end %>
                 </li>
                 <li>
                   <% if current_user && current_user.admin? %>
@@ -57,9 +51,6 @@
 
               <div class="right">
               <ul class="nav navbar-nav">
-
-
-
 
                 <% if current_user %>
                   <li><%=current_user.name||current_user.email%></li>
@@ -84,16 +75,7 @@
 
       </div>
 
-
-
-
-       <!-- <div class="row"> -->
-        <!-- <div class="col-md-12"> -->
-
-          <%= yield %>
-        <!-- </div> -->
-       <!-- </div> -->
-
+      <%= yield %>
 
 
   <div class="footer">

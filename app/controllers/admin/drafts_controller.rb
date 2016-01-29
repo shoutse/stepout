@@ -35,42 +35,31 @@ layout "admin"
       end
     end
 
-           def draft_upload
-            ids = Array( params[:ids] )
-            # drafts = ids.map{ |i| Draft.find_by_id(i) }.compact
-            drafts = Draft.where(id: ids)
+   def draft_upload
+    ids = Array( params[:ids] )
+    drafts = Draft.where(id: ids)
 
-            if params[:commit] == "核選刪除"
+    if params[:commit] == "核選刪除"
 
-             drafts.each { |d| d.destroy }
-             flash[:alert] = "刪除成功"
-            redirect_to admin_topics_path
+      drafts.each { |d| d.destroy }
+      flash[:alert] = "刪除成功"
+      redirect_to admin_topics_path
 
-            elsif params[:commit] == "核選發佈"
-              drafts.each do |d|
+     elsif params[:commit] == "核選發佈"
+       drafts.each do |d|
 
-                # @topic = Topic.copy_from_draft(draft)
-                # @topic.save
+        @topic = Topic.copy_from_draft(d)
+        @topic.save!
+       
+        d.status = "已發佈" # published
+        d.save!
 
-                 @topic = Topic.new
-                 @topic.name = d.name
-                 @topic.position_id = d.position_id
-                 @topic.industry_id = d.industry_id
-                 @topic.content = d.content
-                 @topic.description = d.answer1
-                 @topic.user_id = d.user_id
-                 @topic.working_time = d.working_time
-                 @topic.save
-               d.status = "已發佈"
-               d.save
+        flash[:notice] = "上傳成功"
+      end
 
-               flash[:notice] = "上傳成功"
-              end
-
-              redirect_to admin_topics_path
-            end
-         end
-
+      redirect_to admin_topics_path
+     end
+    end
 
          def edit
 
@@ -100,11 +89,6 @@ layout "admin"
          @draft = Draft.find(params[:id])
        end
 
-       def check_admin
-         unless current_user.admin?
-          raise AvtiveRecord::RecordNotFound
-        end
-      end
 
       def draft_params
         params.require(:draft).permit(:name, :privacy, :istrue, :content, :answer1, :answer2, :industry_id, :position_id, :working_time, :duration, :user_id, :bootsy_image_gallery_id)
