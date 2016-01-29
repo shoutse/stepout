@@ -1,25 +1,23 @@
 <div class="container">
-
-
-    <div class="row topicpeoplebox">
-      <div class="col-md-2 topicimage"><%=link_to image_tag(@topic.user.photo.url(:medium), :class=>"img-circle"),user_path(@topic.user)%></div>
-        <div class="col-md-10">
-          <div class="row">
-              <div class="col-md-10 topicusername">
-                <div class="row">
-                  <div class="col-md-12 topicx">
-                  <spna class="topicpeoplename"><b><%=@topic.user.name%></b></spna><span class="topicpeople"><b><%=@topic.user.occupation%></b></span><span class="topicpeople"><b><%=@topic.industry.name%></b></span><span class="topicpeople"><b>年資: <%=@topic.working_time%> 年</b></span>
-                  </div>
-                  <div class="col-md-9 topicintro">
-                    <p>
-                      <%if @topic.user.introduction%>
-                      <%=@topic.user.introduction%>
-                      <%end%>
-                  </p>
-                  </div>
+  <div class="row topicpeoplebox">
+    <div class="col-md-2 topicimage"><%=link_to image_tag(@topic.user.photo.url(:medium), :class=>"img-circle"),user_path(@topic.user)%></div>
+      <div class="col-md-10">
+        <div class="row">
+            <div class="col-md-10 topicusername">
+              <div class="row">
+                <div class="col-md-12 topicx">
+                <span class="topicpeoplename"><b><%=@topic.user.name%></b></span><span class="topicpeople"><b><%=@topic.user.occupation%></b></span><span class="topicpeople"><b><%=@topic.industry.name%></b></span><span class="topicpeople"><b>年資: <%=@topic.working_time%> 年</b></span>
                 </div>
-
+                <div class="col-md-9 topicintro">
+                  <p>
+                    <%if @topic.user.introduction%>
+                    <%=@topic.user.introduction%>
+                    <%end%>
+                </p>
+                </div>
               </div>
+
+            </div>
               <div class="col-md-2">
                 <div class="row">
                   <div class="col-md-12">
