@@ -93,13 +93,14 @@
                     <div class="modal-body">
 
                       <div class="row">
-                        <div class="col-md-3 topicimage"><%= image_tag d.user.photo.url(:thumb)%></div>
-                        <div class="col-md-9 topicusername"><h6><%=d.user.name%></h6>
+                        <div class="col-md-3 preview-image"><%= image_tag d.user.photo.url(:thumb)%></div>
+                        <div class="col-md-9 preview-username"><h6><%=d.user.name%></h6>
                           <h6><%=d.user.occupation%></h6><h6><%=d.industry.name%></h6><h6>年資: <%=d.working_time%> 年</h6></div>
+                      </div>
 
 
 
-
+                      <div class="row">
                         <div class="col-md-12 topiccontent">
                           <p>
                             <%= simple_format(d.content) %>
