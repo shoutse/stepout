@@ -94,6 +94,6 @@ class Admin::TopicsController < ApplicationController
        # user_name == "username" && password == "password"
      # end
   # end
-
+# clone into my local from Johnason
 
 end
